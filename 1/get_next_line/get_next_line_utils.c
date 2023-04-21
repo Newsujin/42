@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 17:46:19 by spark2            #+#    #+#             */
-/*   Updated: 2023/04/20 22:00:22 by spark2           ###   ########.fr       */
+/*   Updated: 2023/04/21 20:20:06 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,9 @@ char	*ft_strjoin_gnl(char *s1, char const *s2)
 
 	len = ft_strlen(s1) + ft_strlen(s2);
 	str = malloc(sizeof(char) * (len + 1));
-	if (!str) {
-		free(s1);
+	if (!str)
+	{
+		// free(s1);
 		return (0);
 	}
 	i = 0;
@@ -107,6 +108,6 @@ char	*ft_strjoin_gnl(char *s1, char const *s2)
 		i++;
 	}
 	str[i] = 0;
-	free(s1);
+	// free(s1);
 	return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:20:33 by spark2            #+#    #+#             */
-/*   Updated: 2023/04/20 21:25:01 by spark2           ###   ########.fr       */
+/*   Updated: 2023/04/21 18:06:50 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ size_t	ft_strlen(const char *str);
 int		ft_strchr(const char *s, int c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strdup(const char *src);
-char	*ft_strjoin_gnl(char const *s1, char const *s2);
+char	*ft_strjoin_gnl(char *s1, char const *s2);
 
 #endif
