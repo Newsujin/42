@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/09 20:53:26 by spark2            #+#    #+#             */
-/*   Updated: 2023/05/16 21:07:29 by spark2           ###   ########.fr       */
+/*   Created: 2023/05/15 15:35:02 by spark2            #+#    #+#             */
+/*   Updated: 2023/05/16 20:43:04 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 int	main_loop(char **backup, int fd, ssize_t *rd_size)
 {
@@ -80,22 +80,22 @@ void	ft_free(char **backup, char **res)
 char	*get_next_line(int fd)
 {
 	ssize_t		rd_size;
-	static char	*backup;
+	static char	*backup[OPEN_MAX];
 	char		*res;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (!backup)
+	if (!backup[fd])
 	{
-		backup = ft_strdup("");
-		if (!backup)
+		backup[fd] = ft_strdup("");
+		if (!backup[fd])
 			return (NULL);
 	}
-	if (main_loop(&backup, fd, &rd_size))
+	if (main_loop(&backup[fd], fd, &rd_size))
 		return (NULL);
-	if (split_line(&backup, &res))
+	if (split_line(&backup[fd], &res))
 		return (NULL);
-	if (rd_size == 0 && *backup == '\0')
-		ft_free(&backup, &res);
+	if (rd_size == 0 && *backup[fd] == '\0')
+		ft_free(&backup[fd], &res);
 	return (res);
 }
