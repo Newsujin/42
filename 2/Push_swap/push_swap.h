@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 19:35:50 by spark2            #+#    #+#             */
-/*   Updated: 2023/06/30 15:52:27 by spark2           ###   ########.fr       */
+/*   Updated: 2023/06/30 21:06:17 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ typedef struct s_stack
 
 int		ft_atoi(const char *str);
 t_list	*ft_lstnew(int content);
+char	**ft_split(char const **s, int *argc);
 
 #endif
