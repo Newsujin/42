@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 19:35:50 by spark2            #+#    #+#             */
-/*   Updated: 2023/06/30 21:06:17 by spark2           ###   ########.fr       */
+/*   Updated: 2023/07/04 22:26:24 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 typedef struct s_list
 {
 	int				content;
+	struct s_list	*prev;
 	struct s_list	*next;
 }	t_list;
 
@@ -32,6 +33,9 @@ typedef struct s_stack
 
 int		ft_atoi(const char *str);
 t_list	*ft_lstnew(int content);
-char	**ft_split(char const **s, int *argc);
+char	**ft_split_org(char const *s, char c);
+char	*ft_strdup(const char *src);
+char	*ft_strjoin(char const *s1, char const *s2);
+size_t	ft_strlen(const char *str);
 
 #endif

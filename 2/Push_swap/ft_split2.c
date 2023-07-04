@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_split2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 19:23:49 by spark2            #+#    #+#             */
-/*   Updated: 2023/07/04 21:23:54 by spark2           ###   ########.fr       */
+/*   Updated: 2023/07/04 21:29:11 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,14 @@ void	*ft_free(char **ptr, int i)
 	return (0);
 }
 
-int	cnt_word(const char **s, int **argc)
+int	cnt_word(const char *s, int **argc)
 {
-	int	i;
 	int	word;
 
-	i = 0;
 	word = 0;
-	while (*(s[i]))
+	while (*s)
 	{
-		while (*(s[i]) && *(s[i]) == ' ')
+		while (*s && *s == ' ')
 			s++;
 		if (*s)
 			word++;
@@ -62,7 +60,7 @@ char	*ft_word_dup(const char *src)
 	return (dst);
 }
 
-char	**ft_split(char const **s, int *argc)
+char	**ft_split2(char *s, int *argc)
 {
 	int		i;
 	int		j;
@@ -100,11 +98,9 @@ int	main(int argc, char **argv)
 	argc_org = argc;
 	while (++i < argc_org)
 	{
-		res = ft_split(argv[i], &argc);
-		printf("%d\n", argc);
-		printf("%s\n", res[i - 1]);
+		res = ft_split2(argv[i], &argc);
+		printf("argc: %d\n", argc);
+		printf("res: %s\n", res[i - 1]);
+		printf("=============\n");
 	}
-	i = -1;
-	// while (++i < argc)
-	// 	printf("%s\n", res[i]);
 }

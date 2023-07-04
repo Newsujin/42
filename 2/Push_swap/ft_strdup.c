@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/18 15:16:19 by spark2            #+#    #+#             */
-/*   Updated: 2023/07/04 22:06:11 by spark2           ###   ########.fr       */
+/*   Created: 2023/03/17 20:43:48 by spark2            #+#    #+#             */
+/*   Updated: 2023/07/04 22:08:39 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strdup(const char *src)
 {
-	int		len;
 	int		i;
-	char	*str;
+	char	*dst;
 
-	len = ft_strlen(s1) + ft_strlen(s2);
-	str = malloc(sizeof(char) * (len + 1));
-	if (!str)
+	i = 0;
+	while (src[i])
+		i++;
+	dst = (char *)malloc(sizeof(char) * i + 1);
+	if (!dst)
 		return (0);
 	i = 0;
-	while (*s1)
+	while (src[i])
 	{
-		str[i] = *s1++;
+		dst[i] = src[i];
 		i++;
 	}
-	while (*s2)
-	{
-		str[i] = *s2++;
-		i++;
-	}
-	str[i] = 0;
-	return (str);
+	dst[i] = '\0';
+	return (dst);
 }
