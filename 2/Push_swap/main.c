@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 15:22:35 by spark2            #+#    #+#             */
-/*   Updated: 2023/07/04 22:56:36 by spark2           ###   ########.fr       */
+/*   Updated: 2023/07/09 21:59:15 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,57 +17,65 @@ int	main(int argc, char **argv)
 {
 	int		i;
 	int		num;
-	t_list	*head;
-	t_list	*new;
-	// t_list	*tmp;
 	char	*res;
 	char	*tmp;
 	char	**res_split;
+	t_list	*head;
+	t_list	*new;
+	t_stack	*stack;
 
-	//인자 공백과 함께 strjoin으로 전부 붙이기
+	//인자를 공백과 함께 strjoin으로 전부 붙이기
 	i = 0;
 	res = ft_strdup("");
 	while (++i < argc)
 	{
 		tmp = res;
+		if (!ft_strchr(argv[i], ' ')) //argv가 공백으로만 구성되어 있으면 에러
+			return (-1);
 		res = ft_strjoin(tmp, argv[i]);
 		free(tmp);
 		tmp = res;
 		res = ft_strjoin(tmp, " ");
 		free(tmp);
 	}
+	printf("res: %s\n", res);
 	//인자를 공백 기준으로 split
-	i = 0;
-	printf ("tmp = %s\n", tmp);
-	res_split = ft_split_org(tmp, ' ');
-	printf("next split = %s\n", res_split[1]);
-	while (i < argc)
+	res_split = ft_split_org(res, ' ', &argc);
+	// free(res);
+	//유효성 체크
+	i = -1;
+	while (++i < argc)
 	{
-		printf("res_split:%s\n", res_split[i]);
-		// free(res);
-		i++;
+		if (!check_valid(res_split[i]))
+		{
+			printf("valid Error!\n");
+			return (-1);
+		}
 	}
-	// system("leaks a.out");
+	//atoi
+	i = -1;
+	while (++i < argc)
+	{
+		num = ft_atoi(res_split[i]);
+		if (i == 0)
+			head = ft_lstnew(num);
+		else
+		{
+			new = ft_lstnew(num);
+			if (!ft_lstadd_back(&head, new))
+				return (printf("dup Error!\n"));
+		}
+	}
+	stack = ft_stknew(head, new);
 
-	// while (++i < argc)
+	// while (head->next)
 	// {
-	// 	num = ft_atoi(argv[i]);
-	// 	if (i == 1)
-	// 	{
-	// 		head = ft_lstnew(num);
-	// 		printf("head->content: %d\n", head->content);
-	// 		printf("head->next: %p\n", head->next);
-	// 	}
-	// 	else
-	// 	{
-	// 		new = ft_lstnew(num);
-	// 		head->next = new;
-	// 		printf("new->content: %d\n", new->content);
-	// 		printf("new->next: %p\n", new->next);
-	// 	}
-	// 	printf("atoi한 값: %d\n", num);
-	// 	printf("argc: %d\n", argc);
-	// 	printf("argv[i]: %s\n", argv[i]);
-	// 	printf("======================\n");
+	// 	printf("content: %d\n", head->content);
+	// 	head = head->next;
 	// }
+	// printf("content: %d\n", head->content);
+	printf("stack->a_head: %p\n", stack->a_head);
+	push_front(stack, 4);
+	printf("stack->a_head: %p\n", stack->a_head);
+	// system("leaks push_swap");
 }

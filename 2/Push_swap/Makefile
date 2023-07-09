@@ -6,32 +6,32 @@
 #    By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/27 19:35:53 by spark2            #+#    #+#              #
-#    Updated: 2023/06/29 16:34:31 by spark2           ###   ########.fr        #
+#    Updated: 2023/07/09 21:43:39 by spark2           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
-SRCS = push_swap.c
+SRCS = main.c ft_strdup.c ft_strchr.c ft_strlen.c ft_strjoin.c ft_split_org.c \
+check_valid.c ft_atoi.c ft_lstnew.c ft_lstlast.c ft_lstadd_back.c \
+stack_command.c
+
 
 OBJS = $(SRCS:.c=.o)
 
 INCLUDE = push_swap.h
 
-LIBFT = ./libft/libft.a
-
 CC = cc -Wall -Wextra -Werror
 
 all : $(NAME)
 
-$(NAME) : $(OBJS) $(LIBFT)
-	ar -rc $@ $^
+$(NAME) : $(OBJS)
+	$(CC) -o $@ $^
 
 %.o : %.c
 	$(CC) -c $< -o $@ -I $(INCLUDE)
 
 clean :
-	make -C ./libft fclean
 	rm -rf $(OBJS)
 
 fclean : clean

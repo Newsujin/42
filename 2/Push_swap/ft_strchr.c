@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/21 16:44:33 by spark2            #+#    #+#             */
-/*   Updated: 2023/07/09 15:50:53 by spark2           ###   ########.fr       */
+/*   Created: 2023/03/13 22:01:34 by spark2            #+#    #+#             */
+/*   Updated: 2023/07/07 15:49:52 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-t_list	*ft_lstlast(t_list *lst)
+int	ft_strchr(const char *s, int c)
 {
-	if (!lst)
-		return (lst);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
+	while (*s)
+	{
+		if (*s != (char)c)
+			return (1);
+		s++;
+	}
+	return (0);
 }

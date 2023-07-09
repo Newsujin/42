@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:54:08 by spark2            #+#    #+#             */
-/*   Updated: 2023/06/30 20:42:13 by spark2           ###   ########.fr       */
+/*   Updated: 2023/07/08 21:43:39 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ int	ft_atoi(const char *str)
 	i = 0;
 	sign = 1;
 	res = 0;
-	//printf("here\n");
-	//printf("%s\n", str);
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		i++;
 	if (str[i] == '+' || str[i] == '-')
@@ -38,3 +36,8 @@ int	ft_atoi(const char *str)
 	}
 	return ((int)(sign * res));
 }
+
+// #include <stdio.h>
+// int	main(int argc, char **argv){
+// 	printf("%d\n", ft_atoi(argv[1]));
+// }
