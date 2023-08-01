@@ -1,0 +1,17 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/spark2/Desktop/so_long'
+cc -Wall -Wextra -Werror -Imlx -c main.c -o main.o -I so_long.h
+cc -Wall -Wextra -Werror -Imlx -c get_next_line.c -o get_next_line.o -I so_long.h
+cc -Wall -Wextra -Werror -Imlx -c get_next_line_utils.c -o get_next_line_utils.o -I so_long.h
+cc -Wall -Wextra -Werror -Imlx -c ft_split.c -o ft_split.o -I so_long.h
+cc -Wall -Wextra -Werror -Imlx -c ft_memset.c -o ft_memset.o -I so_long.h
+cc -Wall -Wextra -Werror -Imlx -c ft_memcpy.c -o ft_memcpy.o -I so_long.h
+cc -Wall -Wextra -Werror -Imlx -c valid_check.c -o valid_check.o -I so_long.h
+cc -Wall -Wextra -Werror -Imlx -c set_mlx.c -o set_mlx.o -I so_long.h
+cc -Wall -Wextra -Werror -Imlx -c image.c -o image.o -I so_long.h
+cc -Wall -Wextra -Werror -Imlx -c path.c -o path.o -I so_long.h
+cc -Wall -Wextra -Werror -Imlx -c key.c -o key.o -I so_long.h
+cc -Wall -Wextra -Werror -Imlx -c ft_itoa.c -o ft_itoa.o -I so_long.h
+cc -Wall -Wextra -Werror main.o get_next_line.o get_next_line_utils.o ft_split.o ft_memset.o ft_memcpy.o valid_check.o set_mlx.o image.o path.o key.o ft_itoa.o -Lmlx -lmlx -framework OpenGL -framework AppKit -o so_long
+make: Leaving directory `/Users/spark2/Desktop/so_long'
+ 

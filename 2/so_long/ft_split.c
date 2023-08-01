@@ -6,12 +6,12 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 18:15:30 by spark2            #+#    #+#             */
-/*   Updated: 2023/07/27 18:23:55 by spark2           ###   ########.fr       */
+/*   Updated: 2023/07/31 20:48:52 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include "get_next_line.h"
+// #include "get_next_line.h"
 
 void	*ft_split_free(char **ptr, int i)
 {

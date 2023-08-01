@@ -6,11 +6,12 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 20:53:26 by spark2            #+#    #+#             */
-/*   Updated: 2023/07/28 14:09:22 by spark2           ###   ########.fr       */
+/*   Updated: 2023/07/31 22:22:09 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include "so_long.h"
 
 int	main_loop(char **backup, int fd, ssize_t *rd_size)
 {

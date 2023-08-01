@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 17:46:19 by spark2            #+#    #+#             */
-/*   Updated: 2023/07/28 01:03:08 by spark2           ###   ########.fr       */
+/*   Updated: 2023/07/31 22:20:50 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ size_t	ft_strlen(const char *str)
 	size_t	i;
 
 	i = 0;
+	if (!str)
+		return (i);
 	while (str[i])
 		i++;
 	return (i);
@@ -97,10 +99,13 @@ char	*ft_strjoin(char *s1, char const *s2)
 	if (!str)
 		return (0);
 	i = 0;
-	while (*s1)
+	if (s1)
 	{
-		str[i] = *s1++;
-		i++;
+		while (*s1)
+		{
+			str[i] = *s1++;
+			i++;
+		}
 	}
 	while (*s2)
 	{
