@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 20:33:17 by spark2            #+#    #+#             */
-/*   Updated: 2023/07/09 15:30:34 by spark2           ###   ########.fr       */
+/*   Updated: 2023/07/13 20:26:52 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int	check_valid(char *str)
 			return (0);
 		res = res * 10 + str[i] - '0';
 		i++;
+		if (res * sign > 2147483647 || res * sign < -2147483648)
+			return (0);
 	}
-	if (res * sign > 2147483647 || res * sign < -2147483648)
-		return (0);
 	return (1);
 }
