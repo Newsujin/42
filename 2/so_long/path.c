@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 17:18:19 by spark2            #+#    #+#             */
-/*   Updated: 2023/07/31 22:08:56 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/01 20:16:41 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	check_path(t_game *game)
 	int	i;
 
 	i = -1;
-	game->dfs_map = malloc(sizeof(char *) * (game->map_height + 1)); //map 복제할 dfs_map 공간 할당
+	game->dfs_map = malloc(sizeof(char *) * (game->map_height + 1));
 	if (!game->dfs_map)
 		ft_error("malloc error\n");
 	game->dfs_map[game->map_height] = NULL;
@@ -28,7 +28,7 @@ void	check_path(t_game *game)
 			ft_error("malloc error\n");
 	}
 	dfs(game, game->now_y, game->now_x);
-	if (game->door_flag != 1 || game->collect_flag != 1) //door_flag, collect_flag가 1이 아니면 경로 error
+	if (game->door_flag != 1 || game->collect_flag != 1)
 	{
 		free(game->dfs_map);
 		ft_error("path error\n");
@@ -43,7 +43,8 @@ void	dfs(t_game *game, int y, int x)
 {
 	if (game->c_cnt == 0)
 		game->collect_flag = 1;
-	if (game->dfs_map[y][x] == '1' || x < 0 || y < 0 || x > game->map_width - 1 || y > game->map_height - 1)
+	if (game->dfs_map[y][x] == '1' || x < 0 || y < 0 || \
+		x > game->map_width - 1 || y > game->map_height - 1)
 		return ;
 	if (game->dfs_map[y][x] == 'C')
 		game->c_cnt--;

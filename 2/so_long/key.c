@@ -6,25 +6,24 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 17:19:27 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/01 14:22:35 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/01 20:46:24 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	press_key(int keycode, t_game *game) //key에 따라 플레이어 이동
+int	press_key(int keycode, t_game *game)
 {
 	if (keycode == KEY_ESC)
 		finish_game(game);
-	else if (keycode == KEY_W) //상
+	else if (keycode == KEY_W)
 		move_player(game, game->now_x, game->now_y - 1);
-	else if (keycode == KEY_A) //좌
+	else if (keycode == KEY_A)
 		move_player(game, game->now_x - 1, game->now_y);
-	else if (keycode == KEY_S) //하
+	else if (keycode == KEY_S)
 		move_player(game, game->now_x, game->now_y + 1);
-	else if (keycode == KEY_D) //우
+	else if (keycode == KEY_D)
 		move_player(game, game->now_x + 1, game->now_y);
-	//굳이 return 0?
 	return (0);
 }
 
@@ -51,18 +50,20 @@ void	move_player(t_game *game, int x, int y)
 		game->items--;
 		game->map[y][x] = 0;
 		mlx_put_image_to_window(game->mlx, game->win, game->grass, \
-			x * 64, y * 64); //땅 이미지 넣기
+			x * 64, y * 64);
+		if (!game->items)
+			mlx_put_image_to_window(game->mlx, game->win, game->opened_door, \
+				game->door_locate[1] * 64, game->door_locate[0] * 64);
 	}
+	mlx_put_image_to_window(game->mlx, game->win, game->grass, \
+		game->now_x * 64, game->now_y * 64);
 	if (game->map[game->now_y][game->now_x] == 'E')
-		mlx_put_image_to_window_door(game);
-	else
-		mlx_put_image_to_window(game->mlx, game->win, game->grass,\
-			game->now_x * 64, game->now_y * 64); //이전 장소에 풀 이미지 출력
+		mlx_put_image_to_window(game->mlx, game->win, game->door,
+			game->now_x * 64, game->now_y * 64);
 	game->walk++;
-	mlx_put_image_to_window(game->mlx, game->win, game->char_down, \
-		x * 64, y * 64); //이동하려는 곳에 플레이어 이미지 출력
-	ft_putnbr(game->walk);
-	write(1, "\n", 1);
+	mlx_put_image_to_window(game->mlx, game->win, game->duck, \
+		x * 64, y * 64);
+	ft_putnbr_sub(game->walk);
 	game->now_x = x;
 	game->now_y = y;
 }
