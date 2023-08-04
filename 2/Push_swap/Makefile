@@ -6,7 +6,7 @@
 #    By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/27 19:35:53 by spark2            #+#    #+#              #
-#    Updated: 2023/07/12 13:13:28 by spark2           ###   ########.fr        #
+#    Updated: 2023/08/04 17:53:07 by spark2           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ OBJS = $(SRCS:.c=.o)
 INCLUDE = push_swap.h
 
 CC = cc -Wall -Wextra -Werror
+# CC = cc -g
 
 all : $(NAME)
 

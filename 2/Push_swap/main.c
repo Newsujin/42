@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 15:22:35 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/04 15:21:04 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/04 22:32:22 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,11 @@
 // 	a_to_b(stack, stack_size);
 // }
 
+void	_leaks()
+{
+	system("leaks push_swap");
+}
+
 int	main(int argc, char **argv)
 {
 	int		i;
@@ -123,16 +128,13 @@ int	main(int argc, char **argv)
 		tmp = res;
 		if (!ft_strchr(argv[i], ' ')) //argv가 공백으로만 구성되어 있으면 에러
 			return (printf("only space Error!\n"));
-		res = ft_strjoin(tmp, argv[i]);
-		free(tmp);
-		tmp = res;
-		res = ft_strjoin(tmp, " ");
+		res = ft_strjoin(tmp, argv[i]); //인자를 공백과 함께 res에 붙이기
 		free(tmp);
 	}
 	printf("res: %s\n", res);
 	//인자를 공백 기준으로 split
 	res_split = ft_split_org(res, ' ', &argc);
-	// free(res);
+	free(res);
 	//유효성 체크
 	i = -1;
 	while (++i < argc)
@@ -147,100 +149,99 @@ int	main(int argc, char **argv)
 		num = ft_atoi(res_split[i]);
 		if (i == 0)
 		{
-			head = ft_lstnew(head, num, i);
-			// printf("content: %d\n", head->content);
-			// printf("new: %p\n", head);
-			// printf("prev: %p\n", head->prev);
-			// printf("next: %p\n", head->next);
+			head = ft_lstnew(num); //첫번째 인자는 head에 생성
+			if (!head)
+				return (printf("malloc error!\n"));
 		}
 		else
 		{
-			new = ft_lstnew(head, num, i);
-			// printf("content: %d\n", new->content);
-			// printf("new: %p\n", new);
-			// printf("prev: %p\n", new->prev);
-			// printf("next: %p\n", new->next);
-			if (!ft_lstadd_back(&head, new))
+			new = ft_lstnew(num); //나머지 인자들은 new에 생성
+			if (!new)
+				return (printf("malloc error!\n"));
+			if (!ft_lstadd_back(&head, new)) //head 뒤에 인자들 붙이기
 				return (printf("dup Error!\n"));
 		}
 	}
 	// stack 생성
 	stack = ft_stknew(head, new);
-	// printf("stack->a_head: %d\n", stack->a_head->content);
-	// printf("stack->a_bottom: %d\n", stack->a_bottom->content);
-	// printf("=================================\n");
+	if (!stack)
+		return (printf("dup Error!\n"));
+
+	// push
+	// push_a(stack);
 	// while (stack->a_head)
 	// {
-	// printf("a_head->content: %d\n", stack->a_head->content);
-	// printf("a_head: %p\n", stack->a_head);
-	// printf("a_head->prev: %p\n", stack->a_head->prev);
-	// printf("a_head->next: %p\n", stack->a_head->next);
-	// printf("a_head->next->prev: %p\n", stack->a_head->next->prev);
-	// printf("---------------------------------\n");
-	// stack->a_head = stack->a_head->next;
+	// 	printf("%d\n", stack->a_head->content);
+	// 	printf("%p\n", stack->a_head);
+	// 	printf("%p\n", stack->a_head->next);
+	// 	stack->a_head = stack->a_head->next;
 	// }
+	// push_b(stack);
+	// while (stack->b_head)
+	// {
+	// 	printf("%d\n", stack->b_head->content);
+	// 	printf("%p\n", stack->b_head);
+	// 	printf("%p\n", stack->b_head->next);
+	// 	stack->b_head = stack->b_head->next;
+	// 	printf("\n\n");
+	// }
+	// printf("====================\n");
 
-	// // push
-	// printf("a_head->content: %d\n", stack->a_head->content);
-	// printf("b_head->content: %d\n", stack->b_head->content);
-	// printf("a_head: %p\n", stack->a_head);
-	// printf("b_head: %p\n", stack->b_head);
-	// printf("a_head->prev: %p\n", stack->a_head->prev);
-	// printf("b_head->prev: %p\n", stack->b_head->prev);
-	// printf("---------------------------------\n");
-	// push_a(stack); //&로 안 해도 됨?
-	// printf("a_head->content: %d\n", stack->a_head->content);
-	// printf("b_head->content: %d\n", stack->b_head->content);
-	// printf("a_head: %p\n", stack->a_head);
-	// printf("b_head: %p\n", stack->b_head);
-	// printf("a_head->prev: %p\n", stack->a_head->prev);
-	// printf("b_head->prev: %p\n", stack->b_head->prev);
 
+	// // swap
 	// printf("a_head->content: %d\n", stack->a_head->content);
 	// printf("a_head->next->content: %d\n", stack->a_head->next->content);
 	// printf("a_head: %p\n", stack->a_head);
-	// printf("a_head->prev: %p\n", stack->a_head->prev);
 	// printf("a_head->next: %p\n", stack->a_head->next);
-	// printf("a_head->next->prev: %p\n", stack->a_head->next->prev);
 	// printf("a_head->next->next: %p\n", stack->a_head->next->next);
 	// printf("---------------------------------\n");
-	// // swap
 	// swap_a(stack);
 	// printf("a_head->content: %d\n", stack->a_head->content);
 	// printf("a_head->next->content: %d\n", stack->a_head->next->content);
 	// printf("a_head: %p\n", stack->a_head);
-	// printf("a_head->prev: %p\n", stack->a_head->prev);
 	// printf("a_head->next: %p\n", stack->a_head->next);
-	// printf("a_head->next->prev: %p\n", stack->a_head->next->prev);
 	// printf("a_head->next->next: %p\n", stack->a_head->next->next);
 	// printf("---------------------------------\n");
 
 	// printf("b_head->content: %d\n", stack->b_head->content);
 	// printf("b_head->next->content: %d\n", stack->b_head->next->content);
 	// printf("b_head: %p\n", stack->b_head);
-	// printf("b_head->prev: %p\n", stack->b_head->prev);
 	// printf("b_head->next: %p\n", stack->b_head->next);
-	// printf("b_head->next->prev: %p\n", stack->b_head->next->prev);
 	// printf("b_head->next->next: %p\n", stack->b_head->next->next);
+
 	// swap_b(stack);
 	// printf("---------------------------------\n");
 	// printf("b_head->content: %d\n", stack->b_head->content);
 	// printf("b_head->next->content: %d\n", stack->b_head->next->content);
 	// printf("b_head: %p\n", stack->b_head);
-	// printf("b_head->prev: %p\n", stack->b_head->prev);
 	// printf("b_head->next: %p\n", stack->b_head->next);
-	// printf("b_head->next->prev: %p\n", stack->b_head->next->prev);
 	// printf("b_head->next->next: %p\n", stack->b_head->next->next);
 
 	//rotate
 	// rotate_a(stack);
-	// while (stack->a_head)
+	ss(stack);
+	while (stack->b_head)
+	{
+		printf("a_head->content: %d\n", stack->b_head->content);
+		printf("a_head's addr: %p\n", stack->b_head);
+		printf("===============================\n");
+		stack->b_head = stack->b_head->next;
+	}
+	printf("\n\n");
+	while (stack->a_head)
+	{
+		printf("a_head->content: %d\n", stack->a_head->content);
+		printf("a_head's addr: %p\n", stack->a_head);
+		printf("===============================\n");
+		stack->a_head = stack->a_head->next;
+	}
+	// rotate_b(stack);
+	// while (stack->b_head)
 	// {
-	// 	printf("a_head->content: %d\n", stack->a_head->content);
-	// 	printf("a_head's addr: %p\n", stack->a_head);
-	// 	stack->a_head = stack->a_head->next;
+	// 	printf("a_head->content: %d\n", stack->b_head->content);
+	// 	printf("a_head's addr: %p\n", stack->b_head);
+	// 	stack->b_head = stack->b_head->next;
 	// }
-	// system("leaks push_swap");
-
 	// sorting_ing(&stack);
+	// atexit(_leaks);
 }
