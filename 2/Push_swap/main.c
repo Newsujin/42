@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 15:22:35 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/04 22:32:22 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/06 19:28:17 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ int	main(int argc, char **argv)
 		if (!check_valid(res_split[i]))
 			return (printf("valid Error!\n"));
 	}
-	//atoi
+	//atoi & lst add
 	i = -1;
 	while (++i < argc)
 	{
@@ -166,82 +166,4 @@ int	main(int argc, char **argv)
 	stack = ft_stknew(head, new);
 	if (!stack)
 		return (printf("dup Error!\n"));
-
-	// push
-	// push_a(stack);
-	// while (stack->a_head)
-	// {
-	// 	printf("%d\n", stack->a_head->content);
-	// 	printf("%p\n", stack->a_head);
-	// 	printf("%p\n", stack->a_head->next);
-	// 	stack->a_head = stack->a_head->next;
-	// }
-	// push_b(stack);
-	// while (stack->b_head)
-	// {
-	// 	printf("%d\n", stack->b_head->content);
-	// 	printf("%p\n", stack->b_head);
-	// 	printf("%p\n", stack->b_head->next);
-	// 	stack->b_head = stack->b_head->next;
-	// 	printf("\n\n");
-	// }
-	// printf("====================\n");
-
-
-	// // swap
-	// printf("a_head->content: %d\n", stack->a_head->content);
-	// printf("a_head->next->content: %d\n", stack->a_head->next->content);
-	// printf("a_head: %p\n", stack->a_head);
-	// printf("a_head->next: %p\n", stack->a_head->next);
-	// printf("a_head->next->next: %p\n", stack->a_head->next->next);
-	// printf("---------------------------------\n");
-	// swap_a(stack);
-	// printf("a_head->content: %d\n", stack->a_head->content);
-	// printf("a_head->next->content: %d\n", stack->a_head->next->content);
-	// printf("a_head: %p\n", stack->a_head);
-	// printf("a_head->next: %p\n", stack->a_head->next);
-	// printf("a_head->next->next: %p\n", stack->a_head->next->next);
-	// printf("---------------------------------\n");
-
-	// printf("b_head->content: %d\n", stack->b_head->content);
-	// printf("b_head->next->content: %d\n", stack->b_head->next->content);
-	// printf("b_head: %p\n", stack->b_head);
-	// printf("b_head->next: %p\n", stack->b_head->next);
-	// printf("b_head->next->next: %p\n", stack->b_head->next->next);
-
-	// swap_b(stack);
-	// printf("---------------------------------\n");
-	// printf("b_head->content: %d\n", stack->b_head->content);
-	// printf("b_head->next->content: %d\n", stack->b_head->next->content);
-	// printf("b_head: %p\n", stack->b_head);
-	// printf("b_head->next: %p\n", stack->b_head->next);
-	// printf("b_head->next->next: %p\n", stack->b_head->next->next);
-
-	//rotate
-	// rotate_a(stack);
-	ss(stack);
-	while (stack->b_head)
-	{
-		printf("a_head->content: %d\n", stack->b_head->content);
-		printf("a_head's addr: %p\n", stack->b_head);
-		printf("===============================\n");
-		stack->b_head = stack->b_head->next;
-	}
-	printf("\n\n");
-	while (stack->a_head)
-	{
-		printf("a_head->content: %d\n", stack->a_head->content);
-		printf("a_head's addr: %p\n", stack->a_head);
-		printf("===============================\n");
-		stack->a_head = stack->a_head->next;
-	}
-	// rotate_b(stack);
-	// while (stack->b_head)
-	// {
-	// 	printf("a_head->content: %d\n", stack->b_head->content);
-	// 	printf("a_head's addr: %p\n", stack->b_head);
-	// 	stack->b_head = stack->b_head->next;
-	// }
-	// sorting_ing(&stack);
-	// atexit(_leaks);
 }

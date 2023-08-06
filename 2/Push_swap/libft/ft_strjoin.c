@@ -6,11 +6,11 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 15:16:19 by spark2            #+#    #+#             */
-/*   Updated: 2023/07/04 22:06:11 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/06 19:19:37 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

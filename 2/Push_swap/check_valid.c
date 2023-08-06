@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 20:33:17 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/04 15:42:08 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/06 19:21:57 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,9 @@ int	check_valid(char *str)
 			return (0);
 	}
 	return (1);
+}
+
+int	is_empty(t_list *node)
+{
+	return (node == 0);
 }
