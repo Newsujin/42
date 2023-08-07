@@ -6,11 +6,10 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 15:22:35 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/06 19:28:17 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/07 22:02:34 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "push_swap.h"
 
 // void	a_to_b(t_stack stack, int size)
@@ -116,9 +115,8 @@ int	main(int argc, char **argv)
 	char	*res;
 	char	*tmp;
 	char	**res_split;
-	t_list	*head;
 	t_list	*new;
-	t_stack	*stack;
+	t_stack	stack;
 
 	//인자를 공백과 함께 strjoin으로 전부 붙이기
 	i = 0;
@@ -149,8 +147,8 @@ int	main(int argc, char **argv)
 		num = ft_atoi(res_split[i]);
 		if (i == 0)
 		{
-			head = ft_lstnew(num); //첫번째 인자는 head에 생성
-			if (!head)
+			stack.a_head = ft_lstnew(num); //첫번째 인자는 head에 생성
+			if (!stack.a_head)
 				return (printf("malloc error!\n"));
 		}
 		else
@@ -158,12 +156,22 @@ int	main(int argc, char **argv)
 			new = ft_lstnew(num); //나머지 인자들은 new에 생성
 			if (!new)
 				return (printf("malloc error!\n"));
-			if (!ft_lstadd_back(&head, new)) //head 뒤에 인자들 붙이기
+			if (!ft_lstadd_back(&stack.a_head, new)) //stack.a_head 뒤에 인자들 붙이기
 				return (printf("dup Error!\n"));
+			numbering(stack.a_head, new); //인덱싱하기
 		}
 	}
-	// stack 생성
-	stack = ft_stknew(head, new);
-	if (!stack)
-		return (printf("dup Error!\n"));
+	sort(&stack);
 }
+
+void	sort(t_stack *stack)
+{
+	if (stack->a_head의 cnt <= 3)
+		하드코딩;
+	//다섯개 재윤이한테 물어보기.
+	a_to_b(stack, min, max, cnt); //피봇 2개 정하기
+	b_to_a(stack);
+	b_to_a(stack);
+}
+
+//stack의 bottom 없애고 명령어들 수정하기

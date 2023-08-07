@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 19:20:35 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/06 19:27:56 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/07 21:31:19 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,23 @@ t_list	*ft_lstnew(int content)
 		return (0);
 	node->content = content;
 	node->next = 0;
+	node->idx = 1;
 	return (node);
 }
 
-t_stack	*ft_stknew(t_list *a_head, t_list *a_bottom)
-{
-	t_stack	*node;
+// t_stack	*ft_stknew(t_list *a_head, t_list *a_bottom)
+// {
+// 	t_stack	*node;
 
-	node = malloc(sizeof(t_stack));
-	if (!node)
-		return (0);
-	node->a_head = a_head;
-	node->a_bottom = a_bottom;
-	node->b_head = 0;
-	node->b_bottom = 0;
-	return (node);
-}
+// 	node = malloc(sizeof(t_stack));
+// 	if (!node)
+// 		return (0);
+// 	node->a_head = a_head;
+// 	node->a_bottom = a_bottom;
+// 	node->b_head = 0;
+// 	node->b_bottom = 0;
+// 	return (node);
+// }
 
 int	ft_lstadd_back(t_list **lst, t_list *new)
 {

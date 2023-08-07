@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 20:52:50 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/06 19:22:38 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/07 13:57:48 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	pa(t_stack *stack)
 {
 	t_list	*tmp;
 
-	if (is_empty(stack->b_head))
+	if (!stack->b_head)
 		return ;
 	tmp = stack->b_head;
 	stack->b_head = stack->b_head->next;
@@ -29,8 +29,10 @@ void	pb(t_stack *stack)
 {
 	t_list	*tmp;
 
-	if (is_empty(stack->a_head))
+	if (!stack->a_head)
 		return ;
+	if (stack->b_head && !stack->b_bottom)
+		stack->b_bottom = stack->b_head;
 	tmp = stack->a_head;
 	stack->a_head = stack->a_head->next;
 	tmp->next = stack->b_head;
@@ -42,7 +44,7 @@ void	sa(t_stack *stack)
 {
 	t_list	*tmp;
 
-	if (is_empty(stack->a_head) || is_empty(stack->a_head->next))
+	if (!stack->a_head || !stack->a_head->next)
 		return ;
 	tmp = stack->a_head;
 	stack->a_head = stack->a_head->next;
@@ -55,7 +57,7 @@ void	sb(t_stack *stack)
 {
 	t_list	*tmp;
 
-	if (is_empty(stack->b_head) || is_empty(stack->b_head->next))
+	if (!stack->b_head || !stack->b_head->next)
 		return ;
 	//했는데 기억 안 남 아래 과정
 	tmp = stack->b_head;
