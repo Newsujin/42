@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 15:22:35 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/07 22:02:34 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/15 21:21:06 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,14 @@ int	main(int argc, char **argv)
 	t_list	*new;
 	t_stack	stack;
 
+	//stack 초기화 함수 빼기
+	stack.a_head = NULL;
+	stack.a_bottom = NULL;
+	stack.b_head = NULL;
+	stack.b_bottom= NULL;
+	stack.ra_count = 0;
+	stack.pb_count = 0;
+
 	//인자를 공백과 함께 strjoin으로 전부 붙이기
 	i = 0;
 	res = ft_strdup("");
@@ -158,7 +166,8 @@ int	main(int argc, char **argv)
 				return (printf("malloc error!\n"));
 			if (!ft_lstadd_back(&stack.a_head, new)) //stack.a_head 뒤에 인자들 붙이기
 				return (printf("dup Error!\n"));
-			numbering(stack.a_head, new); //인덱싱하기
+			numbering(stack, new); //인덱싱하기
+			stack.a_bottom = new;
 		}
 	}
 	sort(&stack);
@@ -166,12 +175,14 @@ int	main(int argc, char **argv)
 
 void	sort(t_stack *stack)
 {
-	if (stack->a_head의 cnt <= 3)
-		하드코딩;
-	//다섯개 재윤이한테 물어보기.
-	a_to_b(stack, min, max, cnt); //피봇 2개 정하기
-	b_to_a(stack);
-	b_to_a(stack);
+	// if (stack->a_head의 cnt <= 3)
+	// 	하드코딩;
+	// int	cnt = 0;
+
+	// a_to_b(stack, stack->min, stack->max, cnt);
+	a_to_b(stack);
+	// b_to_a(stack);
+	// b_to_a(stack);
 }
 
 //stack의 bottom 없애고 명령어들 수정하기

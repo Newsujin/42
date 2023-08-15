@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 19:35:50 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/07 21:31:27 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/15 21:20:58 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ typedef struct s_stack
 	t_list	*a_bottom;
 	t_list	*b_head;
 	t_list	*b_bottom;
+	int		ra_count;
+	int		pb_count;
+	int		min;
+	int		max;
 }	t_stack;
 
 //check valid
@@ -67,6 +71,12 @@ char	*ft_strdup(const char *src);
 char	*ft_strjoin(char const *s1, char const *s2);
 
 //numbering
-void	numbering(t_list *head, t_list *new);
+void	numbering(t_stack stack, t_list *new);
+
+//sort
+void	sort(t_stack *stack);
+void	pick_pivot(t_stack *stack, int *pivot1, int *pivot2, int *size);
+void	a_to_b(t_stack *stack);
+// void	a_to_b(t_stack *stack, int min, int max, int cnt);
 
 #endif
