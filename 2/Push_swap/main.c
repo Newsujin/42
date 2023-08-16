@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 15:22:35 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/15 21:21:06 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/16 22:49:36 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,8 @@ int	main(int argc, char **argv)
 	stack.b_bottom= NULL;
 	stack.ra_count = 0;
 	stack.pb_count = 0;
+	stack.a_size = 0;
+	stack.b_size = 0;
 
 	//인자를 공백과 함께 strjoin으로 전부 붙이기
 	i = 0;
@@ -167,22 +169,42 @@ int	main(int argc, char **argv)
 			if (!ft_lstadd_back(&stack.a_head, new)) //stack.a_head 뒤에 인자들 붙이기
 				return (printf("dup Error!\n"));
 			numbering(stack, new); //인덱싱하기
-			stack.a_bottom = new;
 		}
 	}
+	stack.a_bottom = new;
+	printf("bottom: %d\n", stack.a_bottom->content);
+
+	stack.a_size = argc; //처음엔 argc 만큼이 a 스택의 크기임
+	pick_pivot(&stack);
+	printf("pv: %d\n", stack.pivot);
 	sort(&stack);
+	while (stack.a_head)
+	{
+		printf("astack: %d\n", stack.a_head->content);
+		stack.a_head = stack.a_head->next;
+	}
+	printf("=============\n");
+	while (stack.b_head)
+	{
+		printf("bstack: %d\n", stack.b_head->content);
+		stack.b_head = stack.b_head->next;
+	}
 }
 
 void	sort(t_stack *stack)
 {
-	// if (stack->a_head의 cnt <= 3)
-	// 	하드코딩;
-	// int	cnt = 0;
-
-	// a_to_b(stack, stack->min, stack->max, cnt);
-	a_to_b(stack);
-	// b_to_a(stack);
-	// b_to_a(stack);
+	while (stack->a_size > 5)
+	{
+		if (stack->a_head->content < stack->pivot)
+			pb(stack);
+		else
+		{
+			pb(stack);
+			rb(stack);
+		}
+		stack->a_size--;
+	}
+	hard_coding(stack);
 }
 
 //stack의 bottom 없애고 명령어들 수정하기

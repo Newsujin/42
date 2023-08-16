@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 19:16:26 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/15 20:55:02 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/16 21:01:53 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ void	numbering(t_stack stack, t_list *new)
 			cur->idx++;
 		else
 			new->idx++;
-		stack.max = cur->idx;
 		cur = cur->next;
 	}
-	stack.min = 1;
 }
