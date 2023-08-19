@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 19:35:50 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/16 22:02:00 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/19 16:36:49 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_list
 {
 	int				content;
 	int				idx;
+	int				cmd_cnt;
 	struct s_list	*next;
 }	t_list;
 
@@ -76,7 +77,7 @@ void	numbering(t_stack stack, t_list *new);
 
 //sort
 void	pick_pivot(t_stack *stack);
-void	sort(t_stack *stack);
+void	a_to_b(t_stack *stack);
 void	hard_coding(t_stack *stack);
 
 #endif

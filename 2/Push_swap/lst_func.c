@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 19:20:35 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/16 20:50:15 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/19 16:36:59 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_list	*ft_lstnew(int content)
 	node->content = content;
 	node->next = 0;
 	node->idx = 0;
+	node->cmd_cnt = 0;
 	return (node);
 }
 
