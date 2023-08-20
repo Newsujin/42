@@ -6,39 +6,30 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 22:01:19 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/19 15:44:23 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/20 22:56:41 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_min_max(t_stack *stack, int flag)
+int	find_min(t_stack *stack)
 {
-	int		value;
+	int		idx;
 	t_list	*tmp;
 
+	idx = -1;
 	tmp = stack->a_head;
-	if (flag == 0) //find min
+	stack->min = 2147483647;
+	while (tmp)
 	{
-		value = 2147483647;
-		while (tmp)
+		if (tmp->content < stack->min)
 		{
-			if (tmp->content < value)
-				value = tmp->content;
-			tmp = tmp->next;
+			stack->min = tmp->content;
+			idx++;
 		}
+		tmp = tmp->next;
 	}
-	else //find max
-	{
-		value = -2147483648;
-		while (tmp)
-		{
-			if (tmp->content > value)
-				value = tmp->content;
-			tmp = tmp->next;
-		}
-	}
-	return (value);
+	return (idx);
 }
 
 void	sort_2_contents(t_stack *stack)
@@ -72,21 +63,27 @@ void	sort_3_contents(t_stack *stack)
 
 void	sort_4_contents(t_stack *stack)
 {
-	int		min;
+	int		idx; //pb할 인자의 idx
 	t_list	*tmp;
 
-	min = find_min_max(stack, 0);
-	tmp = stack->a_head;
-	while (tmp)
+	idx = find_min(stack);
+	while (1)
 	{
-		if (tmp->content != min)
-			ra(stack);
+		tmp = stack->a_head;
+		//최솟값이 아니면 넘기기
+		if (tmp->content != stack->min)
+		{
+			//인덱스가 사이즈 / 2 보다 크다면 rra
+			if (idx > stack->a_size / 2)
+				rra(stack);
+			else
+				ra(stack);
+		}
 		else
 		{
 			pb(stack);
 			break ;
 		}
-		tmp = tmp->next;
 	}
 	sort_3_contents(stack);
 	pa(stack);
@@ -94,32 +91,33 @@ void	sort_4_contents(t_stack *stack)
 
 void	sort_5_contents(t_stack *stack)
 {
-	int		min;
-	int		max;
 	int		cnt;
+	int		idx;
 	t_list	*tmp;
 
-	min = find_min_max(stack, 0);
-	max = find_min_max(stack, 1);
 	cnt = 0;
-	tmp = stack->a_head;
-	while (tmp)
+	idx = find_min(stack);
+	while (cnt < 2)
 	{
-		if (tmp->content == min || tmp->content == max)
+		tmp = stack->a_head;
+		if (tmp->content != stack->min)
+		{
+			if (idx > stack->a_size / 2)
+				rra(stack);
+			else
+				ra(stack);
+		}
+		else
 		{
 			pb(stack);
 			cnt++;
+			idx = find_min(stack);
 		}
-		else
-			ra(stack);
-		tmp = stack->a_head;
-		if (cnt == 2)
-			break ;
 	}
 	sort_3_contents(stack);
 	pa(stack);
 	pa(stack);
-	if (stack->a_head->content < stack->a_head->next->content)
+	if (stack->a_head->content > stack->a_head->next->content)
 		sa(stack);
 }
 

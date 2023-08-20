@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 19:35:50 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/19 16:36:49 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/20 23:12:03 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ typedef struct s_list
 {
 	int				content;
 	int				idx;
-	int				cmd_cnt;
 	struct s_list	*next;
 }	t_list;
 
@@ -31,11 +30,12 @@ typedef struct s_stack
 	t_list	*a_bottom;
 	t_list	*b_head;
 	t_list	*b_bottom;
+	int		pivot;
 	int		ra_count;
 	int		pb_count;
-	int		pivot;
 	int		a_size;
 	int		b_size;
+	int		min;
 }	t_stack;
 
 //check valid
@@ -79,5 +79,16 @@ void	numbering(t_stack stack, t_list *new);
 void	pick_pivot(t_stack *stack);
 void	a_to_b(t_stack *stack);
 void	hard_coding(t_stack *stack);
+int		ra_cnt(t_stack *stack, int b_idx);
+int		rb_cnt(t_stack *stack, int idx);
+void	b_to_a(t_stack *stack);
+void	run_b_to_a(t_stack *stack, int ra_cnt, int rb_cnt);
+
+//etc
+int		ft_abs(int value);
+void	*ft_memset(void *arr, int value, size_t len);
+
+//final
+void	set_min_top(t_stack *stack);
 
 #endif
