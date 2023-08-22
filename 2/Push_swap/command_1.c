@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 20:52:50 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/07 13:57:48 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/21 20:51:25 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	pa(t_stack *stack)
 	stack->b_head = stack->b_head->next;
 	tmp->next = stack->a_head;
 	stack->a_head = tmp;
-	printf("pa\n");
+	write(1, "pa\n", 3);
 }
 
 void	pb(t_stack *stack)
@@ -37,7 +37,7 @@ void	pb(t_stack *stack)
 	stack->a_head = stack->a_head->next;
 	tmp->next = stack->b_head;
 	stack->b_head = tmp;
-	printf("pb\n");
+	write(1, "pb\n", 3);
 }
 
 void	sa(t_stack *stack)
@@ -50,7 +50,7 @@ void	sa(t_stack *stack)
 	stack->a_head = stack->a_head->next;
 	tmp->next = stack->a_head->next;
 	stack->a_head->next = tmp;
-	printf("sa\n");
+	write(1, "sa\n", 3);
 }
 
 void	sb(t_stack *stack)
@@ -64,7 +64,7 @@ void	sb(t_stack *stack)
 	stack->b_head = stack->b_head->next;
 	tmp->next = stack->b_head->next;
 	stack->b_head->next = tmp;
-	printf("sb\n");
+	write(1, "sb\n", 3);
 }
 
 void	ss(t_stack *stack)

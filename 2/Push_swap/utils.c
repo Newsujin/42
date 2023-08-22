@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 16:31:28 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/20 23:09:24 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/22 19:17:23 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-int	ft_strchr(const char *s, int c)
+int	is_only_space(const char *s, int c)
 {
 	while (*s)
 	{

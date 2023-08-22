@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   free_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/17 20:43:48 by spark2            #+#    #+#             */
-/*   Updated: 2023/03/17 20:52:58 by spark2           ###   ########.fr       */
+/*   Created: 2023/08/22 20:12:08 by spark2            #+#    #+#             */
+/*   Updated: 2023/08/22 20:21:42 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-char	*ft_strdup(const char *src)
+void	free_stack(t_stack *stack)
 {
-	int		i;
-	char	*dst;
+	t_list	*tmp;
+	t_list	*node;
 
-	i = 0;
-	while (src[i])
-		i++;
-	dst = (char *)malloc(sizeof(char) * i + 1);
-	if (!dst)
-		return (0);
-	i = 0;
-	while (src[i])
+	node = stack->a_head;
+	while (node)
 	{
-		dst[i] = src[i];
-		i++;
+		tmp = node->next;
+		free(node);
+		node = 0;
+		node = tmp;
 	}
-	dst[i] = '\0';
-	return (dst);
+	node = stack->b_head;
+	while (node)
+	{
+		tmp = node->next;
+		free(node);
+		node = 0;
+		node = tmp;
+	}
+	exit(1);
 }

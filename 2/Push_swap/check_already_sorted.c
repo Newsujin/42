@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   check_already_sorted.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/22 15:39:07 by spark2            #+#    #+#             */
-/*   Updated: 2023/03/23 21:37:48 by spark2           ###   ########.fr       */
+/*   Created: 2023/08/21 21:16:44 by spark2            #+#    #+#             */
+/*   Updated: 2023/08/22 20:27:48 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+int	check_already_sorted(t_stack *stack)
 {
-	t_list	*res;
-	t_list	*cur;
 	t_list	*tmp;
 
-	if (!lst || !f)
-		return (0);
-	res = NULL;
-	while (lst)
+	tmp = stack->a_head;
+	while (tmp->next)
 	{
-		tmp = f(lst->content);
-		cur = ft_lstnew(tmp);
-		if (!cur)
-		{
-			ft_lstclear(&res, del);
-			free(tmp);
-			return (NULL);
-		}
-		ft_lstadd_back(&res, cur);
-		lst = lst->next;
+		if (tmp->idx > tmp->next->idx)
+			return (0);
+		tmp = tmp->next;
 	}
-	return (res);
+	return (1);
 }

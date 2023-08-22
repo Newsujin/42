@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 19:23:49 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/06 19:16:08 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/22 19:36:27 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ char	*ft_word_dup(char const *s, int idx, char c)
 	return (dst);
 }
 
+/* 인자를 공백 기준으로 split */
 char	**ft_split_org(char const *s, char c, int *argc)
 {
 	int		i;
@@ -71,7 +72,7 @@ char	**ft_split_org(char const *s, char c, int *argc)
 	*argc = cnt_word(s, c);
 	ptr = malloc(sizeof(char *) * (*argc + 1));
 	if (!ptr)
-		return (0);
+		return (0); //0 반환하면 exit 에러 처리
 	while (s[i] != 0)
 	{
 		while (s[i] && s[i] == c)
