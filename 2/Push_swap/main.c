@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 15:22:35 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/22 22:43:18 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/23 20:11:25 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,13 @@ int	main(int argc, char **argv)
 	setting(&stack, argc, res_split);
 	pick_pivot(&stack);
 	a_to_b(&stack);
-	hard_coding(stack);
+	hard_coding(&stack);
 	b_to_a(&stack);
 	set_min_top(&stack);
 
 	// printf("pv1: %d\n", stack.pivot1);
 	// printf("pv2: %d\n", stack.pivot2);
+
 	//debug
 	// t_list	*stack_tmp;
 	// stack_tmp = stack.a_head;

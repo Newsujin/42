@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 22:01:19 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/22 22:42:58 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/23 17:40:44 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	sort_3_contents(t_stack *stack)
 	int	fst;
 	int	scd;
 	int	trd;
-
 	fst = stack->a_head->content;
 	scd = stack->a_head->next->content;
 	trd = stack->a_bottom->content;
@@ -121,31 +120,31 @@ void	sort_5_contents(t_stack *stack)
 		sa(stack);
 }
 
-void	hard_coding(t_stack stack)
-{
-	if (stack.a_size == 1)
-		return ;
-	else if (stack.a_size == 2)
-		return (sort_2_contents(&stack));
-	else if (stack.a_size == 3)
-		return (sort_3_contents(&stack));
-	else if (stack.a_size == 4)
-		return (sort_4_contents(&stack));
-	else
-		return (sort_5_contents(&stack));
-}
+// void	hard_coding(t_stack stack)
+// {
+// 	if (stack.a_size == 1)
+// 		return ;
+// 	else if (stack.a_size == 2)
+// 		return (sort_2_contents(&stack));
+// 	else if (stack.a_size == 3)
+// 		return (sort_3_contents(&stack));
+// 	else if (stack.a_size == 4)
+// 		return (sort_4_contents(&stack));
+// 	else
+// 		return (sort_5_contents(&stack));
+// }
 
 //mine!
-// void	hard_coding(t_stack *stack)
-// {
-// 	if (stack->a_size == 1)
-// 		return ;
-// 	else if (stack->a_size == 2)
-// 		return (sort_2_contents(stack));
-// 	else if (stack->a_size == 3)
-// 		return (sort_3_contents(stack));
-// 	else if (stack->a_size == 4)
-// 		return (sort_4_contents(stack));
-// 	else
-// 		return (sort_5_contents(stack));
-// }
+void	hard_coding(t_stack *stack)
+{
+	if (stack->a_size == 1)
+		return ;
+	else if (stack->a_size == 2)
+		return (sort_2_contents(stack));
+	else if (stack->a_size == 3)
+		return (sort_3_contents(stack));
+	else if (stack->a_size == 4)
+		return (sort_4_contents(stack));
+	else
+		return (sort_5_contents(stack));
+}

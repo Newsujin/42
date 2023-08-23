@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 19:35:50 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/22 22:43:13 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/23 20:10:45 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	numbering(t_stack stack, t_list *new);
 //sort
 void	pick_pivot(t_stack *stack);
 void	a_to_b(t_stack *stack);
-void	hard_coding(t_stack stack);
+void	hard_coding(t_stack *stack);
 int		ra_cnt(t_stack *stack, int b_idx);
 int		rb_cnt(t_stack *stack, int idx);
 void	b_to_a(t_stack *stack);

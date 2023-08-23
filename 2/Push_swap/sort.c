@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 16:03:01 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/22 22:40:02 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/23 17:56:40 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 void	a_to_b(t_stack *stack)
 {
 	int	i;
+
 	i = -1;
 	while (++i < stack->a_size + stack->b_size)
 	{
@@ -57,7 +58,6 @@ void	a_to_b(t_stack *stack)
 		(stack->a_size)--;
 		(stack->b_size)++;
 	}
-	;
 }
 
 /* stack b에서 stack a로 옮기는 데 비용이 가장 적게 드는 인자 선택 및 이동 */
