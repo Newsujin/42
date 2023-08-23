@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 15:22:35 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/23 20:11:25 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/23 22:27:02 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,15 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (1);
 	res = combine_all_arg(argc, argv);
-	res_split = ft_split_org(res, ' ', &argc);
+	res_split = ft_split(res, ' ', &argc);
 	free(res);
 	ft_memset(&stack, 0, sizeof(t_stack));
 	setting(&stack, argc, res_split);
 	pick_pivot(&stack);
 	a_to_b(&stack);
 	hard_coding(&stack);
-	b_to_a(&stack);
+	greedy(&stack);
 	set_min_top(&stack);
-
-	// printf("pv1: %d\n", stack.pivot1);
-	// printf("pv2: %d\n", stack.pivot2);
 
 	//debug
 	// t_list	*stack_tmp;
@@ -54,6 +51,9 @@ int	main(int argc, char **argv)
 	// 	printf("bstack: %d\n", stack_tmp->content);
 	// 	stack_tmp = stack_tmp->next;
 	// }
+
+	free_array(argc, res_split);
+	free_stack(&stack);
 	// atexit(_leaks);
 }
 

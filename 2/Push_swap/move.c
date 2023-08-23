@@ -1,20 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run_b_to_a.c                                       :+:      :+:    :+:   */
+/*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/20 16:15:54 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/22 20:48:37 by spark2           ###   ########.fr       */
+/*   Created: 2023/08/23 22:30:47 by spark2            #+#    #+#             */
+/*   Updated: 2023/08/23 22:32:15 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/* stack a에 인자 5개만 남기고 pivot을 기준으로 pb or pb, rb */
+void	a_to_b(t_stack *stack)
+{
+	int	i;
+
+	i = -1;
+	while (++i < stack->a_size + stack->b_size)
+	{
+		if (stack->a_head->content < stack->pivot1)
+			ra(stack);
+		else if (stack->a_head->content > stack->pivot2)
+		{
+			pb(stack);
+			rb(stack);
+			stack->a_size--;
+			stack->b_size++;
+		}
+		else
+		{
+			pb(stack);
+			stack->a_size--;
+			stack->b_size++;
+		}
+	}
+}
+
+void	b_to_a(t_stack *stack, int ra_cnt, int rb_cnt)
+{
+	run_rb(stack, rb_cnt);
+	run_ra(stack, ra_cnt);
+	pa(stack);
+}
+
 void	run_rb(t_stack *stack, int rb_cnt)
 {
-	//음수라면 rrb 아니면 rb
 	if (rb_cnt < 0)
 	{
 		rb_cnt = -rb_cnt;
@@ -53,11 +85,4 @@ void	run_ra(t_stack *stack, int ra_cnt)
 			ra_cnt--;
 		}
 	}
-}
-
-void	run_b_to_a(t_stack *stack, int ra_cnt, int rb_cnt)
-{
-	run_rb(stack, rb_cnt);
-	run_ra(stack, ra_cnt);
-	pa(stack);
 }

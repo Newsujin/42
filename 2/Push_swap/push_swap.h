@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 19:35:50 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/23 20:10:45 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/23 22:52:05 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ typedef struct s_stack
 	t_list	*b_bottom;
 	int		pivot1;
 	int		pivot2;
-	// int		pivot;
 	int		ra_count; //ra or rra 횟수
 	int		rb_count; //rb or rrb 횟수
 	int		ra_final; //최종 ra or rra 횟수
@@ -42,9 +41,15 @@ typedef struct s_stack
 	int		min;
 }	t_stack;
 
+//combine
+char	*combine_all_arg(int argc, char **argv);
+
 //setting
+void	*ft_memset(void *arr, int value, size_t len);
 void	setting(t_stack *stack, int argc, char **res_split);
 int		check_valid(char *str);
+void	init_stack(int argc, char **res_split, t_stack *stack);
+int		check_already_sorted(t_stack *stack);
 
 //lst func
 t_list	*ft_lstnew(int content);
@@ -67,7 +72,7 @@ void	rrr(t_stack *stack);
 void	*ft_free(char **ptr, int i);
 int		cnt_word(const char *s, char c);
 char	*ft_word_dup(char const *s, int idx, char c);
-char	**ft_split_org(char const *s, char c, int *argc);
+char	**ft_split(char const *s, char c, int *argc);
 
 //utils
 size_t	ft_strlen(const char *str);
@@ -81,26 +86,38 @@ void	numbering(t_stack stack, t_list *new);
 
 //sort
 void	pick_pivot(t_stack *stack);
+
+//a_to_b
 void	a_to_b(t_stack *stack);
+
+//hard_coding
 void	hard_coding(t_stack *stack);
-int		ra_cnt(t_stack *stack, int b_idx);
+void	sort_2_contents(t_stack *stack);
+void	sort_3_contents(t_stack *stack);
+void	sort_4_contents(t_stack *stack);
+void	sort_5_contents(t_stack *stack);
+int		find_min(t_stack *stack);
+void	move_2_element(t_stack *stack);
+
+//greedy
+void	greedy(t_stack *stack);
 int		rb_cnt(t_stack *stack, int idx);
-void	b_to_a(t_stack *stack);
-void	run_b_to_a(t_stack *stack, int ra_cnt, int rb_cnt);
+int		ra_cnt(t_stack *stack, int b_idx);
+void	ra_cnt2(t_stack *stack, int b_content, int *a_loc, int *min_idx);
+
+//b_to_a
+void	b_to_a(t_stack *stack, int ra_cnt, int rb_cnt);
+void	run_rb(t_stack *stack, int rb_cnt);
+void	run_ra(t_stack *stack, int ra_cnt);
 
 //etc
 int		ft_abs(int value);
-void	*ft_memset(void *arr, int value, size_t len);
 
 //final
 void	set_min_top(t_stack *stack);
+int		find_first_value(t_stack *stack);
 
-//already sorted
-int		check_already_sorted(t_stack *stack);
-
-//combine
-char	*combine_all_arg(int argc, char **argv);
-
+void	free_array(int argc, char **str);
 void	free_stack(t_stack *stack);
 
 #endif

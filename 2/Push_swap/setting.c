@@ -6,11 +6,39 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 20:33:17 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/23 20:10:34 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/23 21:26:03 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	*ft_memset(void *arr, int value, size_t len)
+{
+	size_t			i;
+	unsigned char	*temp;
+
+	temp = (unsigned char *)arr;
+	i = 0;
+	while (i < len)
+		temp[i++] = value;
+	return (temp);
+}
+
+void	setting(t_stack *stack, int argc, char **res_split)
+{
+	int		i;
+
+	i = -1;
+	while (++i < argc)
+	{
+		if (!check_valid(res_split[i]))
+			free_array(argc, res_split); //인자로 받아 free하려면 포인터가 필요한데, 그러면 ***res_split..?
+	}
+	init_stack(argc, res_split, stack);
+	stack->a_size = argc;
+	if (check_already_sorted(stack))
+		free_stack(stack);
+}
 
 /* +, -, 빈 문자, 숫자, int 범위 체크 */
 int	check_valid(char *str)
@@ -42,6 +70,7 @@ int	check_valid(char *str)
 	return (1);
 }
 
+/* atoi & put element to stack */
 void	init_stack(int argc, char **res_split, t_stack *stack)
 {
 	int		i;
@@ -71,23 +100,16 @@ void	init_stack(int argc, char **res_split, t_stack *stack)
 	stack->a_bottom = new;
 }
 
-void	setting(t_stack *stack, int argc, char **res_split)
+int	check_already_sorted(t_stack *stack)
 {
-	int		i;
+	t_list	*tmp;
 
-	i = -1;
-	while (++i < argc)
+	tmp = stack->a_head;
+	while (tmp->next)
 	{
-		if (!check_valid(res_split[i]))
-		{
-			i = -1;
-			while (++i < argc)
-				free(res_split[i]);
-			exit(1);
-		}
+		if (tmp->idx > tmp->next->idx)
+			return (0);
+		tmp = tmp->next;
 	}
-	init_stack(argc, res_split, stack);
-	stack->a_size = argc;
-	if (check_already_sorted(stack))
-		free_stack(stack);
+	return (1);
 }

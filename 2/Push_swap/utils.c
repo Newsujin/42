@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 16:31:28 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/22 19:17:23 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/23 21:15:15 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char	*str;
 
 	len = ft_strlen(s1) + ft_strlen(s2) + 1;
-	str = malloc(sizeof(char) * (len + 2));
+	str = malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (0);
 	i = 0;
