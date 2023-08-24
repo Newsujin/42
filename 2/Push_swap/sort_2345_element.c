@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 22:51:16 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/23 22:51:43 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/24 21:41:20 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	sort_2_contents(t_stack *stack)
 {
 	if (stack->a_head->content > stack->a_head->next->content)
-		sa(stack);
+		sa(stack, 0);
 }
 
 void	sort_3_contents(t_stack *stack)
@@ -30,11 +30,11 @@ void	sort_3_contents(t_stack *stack)
 	while (!(fst < scd && scd < trd))
 	{
 		if (fst > scd && fst > trd)
-			ra(stack);
+			ra(stack, 0);
 		else if (scd > trd)
-			rra(stack);
+			rra(stack, 0);
 		else if (fst > scd)
-			sa(stack);
+			sa(stack, 0);
 		fst = stack->a_head->content;
 		scd = stack->a_head->next->content;
 		trd = stack->a_bottom->content;
@@ -53,9 +53,9 @@ void	sort_4_contents(t_stack *stack)
 		if (tmp->content != stack->min)
 		{
 			if (idx > stack->a_size / 2)
-				rra(stack);
+				rra(stack, 0);
 			else
-				ra(stack);
+				ra(stack, 0);
 		}
 		else
 		{
@@ -69,11 +69,10 @@ void	sort_4_contents(t_stack *stack)
 
 void	sort_5_contents(t_stack *stack)
 {
-
 	move_2_element(stack);
 	sort_3_contents(stack);
 	pa(stack);
 	pa(stack);
 	if (stack->a_head->content > stack->a_head->next->content)
-		sa(stack);
+		sa(stack, 0);
 }

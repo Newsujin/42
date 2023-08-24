@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 20:36:53 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/23 22:43:17 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/24 21:39:40 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	set_min_top(t_stack *stack)
 	{
 		while (stack->a_size - idx)
 		{
-			rra(stack);
+			rra(stack, 0);
 			idx++;
 		}
 	}
@@ -30,7 +30,7 @@ void	set_min_top(t_stack *stack)
 	{
 		while (idx)
 		{
-			ra(stack);
+			ra(stack, 0);
 			idx--;
 		}
 	}

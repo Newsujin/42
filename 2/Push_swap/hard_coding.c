@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 22:01:19 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/23 22:51:53 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/24 21:38:57 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ void	move_2_element(t_stack *stack)
 		if (tmp->content != stack->min)
 		{
 			if (idx > stack->a_size / 2)
-				rra(stack);
+				rra(stack, 0);
 			else
-				ra(stack);
+				ra(stack, 0);
 		}
 		else
 		{
@@ -62,9 +62,11 @@ void	move_2_element(t_stack *stack)
 int	find_min(t_stack *stack)
 {
 	int		idx;
+	int		min_idx;
 	t_list	*tmp;
 
 	idx = -1;
+	min_idx = -1;
 	tmp = stack->a_head;
 	stack->min = 2147483647;
 	while (tmp)
@@ -72,9 +74,10 @@ int	find_min(t_stack *stack)
 		if (tmp->content < stack->min)
 		{
 			stack->min = tmp->content;
-			idx++;
+			min_idx++;
 		}
+		idx++;
 		tmp = tmp->next;
 	}
-	return (idx);
+	return (min_idx);
 }

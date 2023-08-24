@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 16:03:01 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/23 22:31:41 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/24 15:45:51 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,11 @@ void	ra_cnt2(t_stack *stack, int b_content, int *a_loc, int *min_idx)
 		i++;
 		tmp = tmp->next;
 	}
+}
+
+int	ft_abs(int value)
+{
+	if (value < 0)
+		return (-(value));
+	return (value);
 }
