@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 20:52:12 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/24 22:22:47 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/25 21:59:06 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-#include "push_swap_bonus.h"
+# include "push_swap_bonus.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 20

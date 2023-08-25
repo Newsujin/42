@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 19:35:50 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/24 22:23:08 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/25 22:10:40 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
+# include <fcntl.h>
+# include "get_next_line.h"
 
 typedef struct s_list
 {
@@ -53,49 +54,28 @@ void	*ft_memset(void *arr, int value, size_t len);
 void	setting(t_stack *stack, int argc, char **res_split);
 int		check_valid(char *str);
 void	init_stack(int argc, char **res_split, t_stack *stack);
-int		check_already_sorted(t_stack *stack);
+int		check_sorted(t_stack *stack);
 
 //pivot, indexing
 void	numbering(t_stack stack, t_list *new);
-void	pick_pivot(t_stack *stack);
 
 //lst func
 t_list	*ft_lstnew(int content);
 int		ft_lstadd_back(t_list **lst, t_list *new);
 t_list	*ft_lstlast(t_list *lst, t_list *new);
 
-//move
-void	a_to_b(t_stack *stack);
-void	b_to_a(t_stack *stack, int ra_cnt, int rb_cnt);
-void	run_rb(t_stack *stack, int rb_cnt);
-void	run_ra(t_stack *stack, int ra_cnt);
-
 //command
 void	pa(t_stack *stack);
 void	pb(t_stack *stack);
-void	sa(t_stack *stack, int ss_flag);
-void	sb(t_stack *stack, int ss_flag);
+void	sa(t_stack *stack);
+void	sb(t_stack *stack);
 void	ss(t_stack *stack);
-void	ra(t_stack *stack, int rr_flag);
-void	rb(t_stack *stack, int rr_flag);
-void	rra(t_stack *stack, int rrr_flag);
-void	rrb(t_stack *stack, int rrr_flag);
+void	ra(t_stack *stack);
+void	rb(t_stack *stack);
+void	rr(t_stack *stack);
+void	rra(t_stack *stack);
+void	rrb(t_stack *stack);
 void	rrr(t_stack *stack);
-
-//hard_coding
-void	hard_coding(t_stack *stack);
-void	move_2_element(t_stack *stack);
-int		find_min(t_stack *stack);
-void	sort_2_contents(t_stack *stack);
-void	sort_3_contents(t_stack *stack);
-void	sort_4_contents(t_stack *stack);
-void	sort_5_contents(t_stack *stack);
-
-//greedy
-void	greedy(t_stack *stack);
-int		rb_cnt(t_stack *stack, int idx);
-int		ra_cnt(t_stack *stack, int b_idx);
-void	ra_cnt2(t_stack *stack, int b_content, int *a_loc, int *min_idx);
 
 //final_arrange
 void	set_min_top(t_stack *stack);
@@ -114,5 +94,10 @@ void	free_split(char **ptr, int i);
 void	free_array(char *str);
 void	free_2d_array(int argc, char **str, int flag);
 void	free_stack(t_stack *stack, int flag);
+
+//bonus
+void	run_command1(t_stack *stack, char *str);
+void	gnl_cmp(t_stack *stack);
+void	finish(int argc, char **res_split, t_stack *stack, int flag, char *str);
 
 #endif

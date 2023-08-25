@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 20:33:17 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/24 22:49:28 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/25 21:58:16 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,6 @@ void	setting(t_stack *stack, int argc, char **res_split)
 	}
 	init_stack(argc, res_split, stack);
 	stack->a_size = argc;
-	if (check_already_sorted(stack))
-	{
-		write(1, "OK\n", 3);
-		free_stack(stack, 0);
-	}
 }
 
 int	check_valid(char *str)
@@ -104,7 +99,7 @@ void	init_stack(int argc, char **res_split, t_stack *stack)
 	stack->a_bottom = new;
 }
 
-int	check_already_sorted(t_stack *stack)
+int	check_sorted(t_stack *stack)
 {
 	t_list	*tmp;
 

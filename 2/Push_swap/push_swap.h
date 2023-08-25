@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 19:35:50 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/24 21:37:55 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/25 18:00:57 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void	sb(t_stack *stack, int ss_flag);
 void	ss(t_stack *stack);
 void	ra(t_stack *stack, int rr_flag);
 void	rb(t_stack *stack, int rr_flag);
+void	rr(t_stack *stack);
 void	rra(t_stack *stack, int rrr_flag);
 void	rrb(t_stack *stack, int rrr_flag);
 void	rrr(t_stack *stack);

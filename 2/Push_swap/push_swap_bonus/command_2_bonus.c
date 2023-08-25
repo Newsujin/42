@@ -6,13 +6,13 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 16:29:50 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/24 22:22:31 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/25 19:53:51 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-void	ra(t_stack *stack, int rr_flag)
+void	ra(t_stack *stack)
 {
 	t_list	*tmp;
 
@@ -23,11 +23,9 @@ void	ra(t_stack *stack, int rr_flag)
 	stack->a_bottom = stack->a_bottom->next;
 	stack->a_head->next = 0;
 	stack->a_head = tmp;
-	if (rr_flag == 0)
-		write(1, "ra\n", 3);
 }
 
-void	rb(t_stack *stack, int rr_flag)
+void	rb(t_stack *stack)
 {
 	t_list	*tmp;
 
@@ -38,13 +36,10 @@ void	rb(t_stack *stack, int rr_flag)
 	stack->b_bottom = stack->b_bottom->next;
 	stack->b_head->next = 0;
 	stack->b_head = tmp;
-	if (rr_flag == 0)
-		write(1, "rb\n", 3);
 }
 
 void	rr(t_stack *stack)
 {
-	ra(stack, 1);
-	rb(stack, 1);
-	write(1, "rr\n", 3);
+	ra(stack);
+	rb(stack);
 }
