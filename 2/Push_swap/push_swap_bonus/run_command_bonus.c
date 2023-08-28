@@ -6,13 +6,13 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 16:32:41 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/25 22:08:52 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/28 12:40:33 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-void	gnl_cmp(t_stack *stack)
+void	gnl_cmp(t_stack *stack, int argc, char **res_split)
 {
 	char	*line;
 
@@ -23,6 +23,8 @@ void	gnl_cmp(t_stack *stack)
 			break ;
 		run_command1(stack, line);
 		free(line);
+		if (stack->wrong_elmt == 1)
+			finish_error(argc, res_split, stack, "Error\n");
 	}
 }
 
@@ -40,13 +42,6 @@ int	ft_strcmp(char *s1, char *s2)
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
-// void	wrong_element(t_stack *stack, char *str, char ***res_split)
-// {
-// 	write(1, "Error\n", 6);
-// 	// free_2d_array(argc, res_split, 0);
-// 	free(stack, 1);
-// }
-
 void	run_command2(t_stack *stack, char *str)
 {
 	if (!(ft_strcmp(str, "ra\n")))
@@ -62,7 +57,7 @@ void	run_command2(t_stack *stack, char *str)
 	else if (!(ft_strcmp(str, "rrr\n")))
 		rrr(stack);
 	else
-		exit(1);
+		stack->wrong_elmt = 1;
 }
 
 void	run_command1(t_stack *stack, char *str)

@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 19:35:50 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/25 22:10:40 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/28 12:40:25 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_stack
 	int		a_size;
 	int		b_size;
 	int		min;
+	int		wrong_elmt;
 }	t_stack;
 
 //array
@@ -97,7 +98,8 @@ void	free_stack(t_stack *stack, int flag);
 
 //bonus
 void	run_command1(t_stack *stack, char *str);
-void	gnl_cmp(t_stack *stack);
-void	finish(int argc, char **res_split, t_stack *stack, int flag, char *str);
+void	gnl_cmp(t_stack *stack, int argc, char **res_split);
+void	finish_normal(int argc, char **res_split, t_stack *stack, char *str);
+void	finish_error(int argc, char **res_split, t_stack *stack, char *str);
 
 #endif

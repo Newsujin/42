@@ -6,13 +6,12 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 16:03:01 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/24 15:45:51 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/28 12:40:51 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* stack b에서 stack a로 옮기는 데 비용이 가장 적게 드는 인자 선택 및 이동 */
 void	greedy(t_stack *stack)
 {
 	int		i;
@@ -42,7 +41,6 @@ void	greedy(t_stack *stack)
 	}
 }
 
-/* rb or rrb 횟수 구하기 */
 int	rb_cnt(t_stack *stack, int idx)
 {
 	if ((stack->b_size / 2) < idx)
@@ -50,7 +48,6 @@ int	rb_cnt(t_stack *stack, int idx)
 	return (idx);
 }
 
-/* ra or rra 횟수 구하기 */
 int	ra_cnt(t_stack *stack, int b_content)
 {
 	int		a_loc;

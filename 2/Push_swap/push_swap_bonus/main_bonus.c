@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 22:08:49 by spark2            #+#    #+#             */
-/*   Updated: 2023/08/25 22:09:19 by spark2           ###   ########.fr       */
+/*   Updated: 2023/08/26 16:13:30 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,11 @@ int	main(int argc, char **argv)
 	free(res);
 	ft_memset(&stack, 0, sizeof(t_stack));
 	setting(&stack, argc, res_split);
-	gnl_cmp(&stack);
+	gnl_cmp(&stack, argc, res_split);
 	if (!check_sorted(&stack))
-		finish(argc, res_split, &stack, 1, "KO\n");
+		finish_error(argc, res_split, &stack, "KO\n");
 	if (stack.b_head)
-		finish(argc, res_split, &stack, 1, "KO\n");
-	finish(argc, res_split, &stack, 0, "OK\n");
-	// atexit(_leaks);
+		finish_error(argc, res_split, &stack, "KO\n");
+	finish_normal(argc, res_split, &stack, "OK\n");
 	return (0);
 }
-
-// void	_leaks()
-// {
-// 	system("leaks checker");
-// }
