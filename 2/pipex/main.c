@@ -6,51 +6,46 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 19:12:18 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/12 21:25:16 by spark2           ###   ########.fr       */
+/*   Updated: 2023/09/18 20:46:01 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
+// void	leaks()
+// {
+// 	system("leaks pipex");
+// }
+
+//envp?
+//perror?
 int	main(int argc, char **argv, char **envp)
 {
 	t_arg	arg;
+	// atexit(leaks);
 
-	//argc는 무조건 5개로 고정되어 있으니 에러 처리
-	if (argc != 5)
-	{
-		perror("argument error");
-		exit(1);
-	}
-	//infile 과 outfile을 open한다.
-	arg.infile = open(argv[1], O_RDONLY);
-	if (arg.infile == -1)
-	{
-		perror("Could not open infile");
-		exit(1);
-	}
-	arg.outfile = open(argv[4], O_RDWR | O_CREAT | O_TRUNC, 0644);
-	if (arg.outfile == -1)
-	{
-		perror("Outfile error");
-		exit(1);
-	}
-	//환경변수에서 PATH를 찾아서 PATH= 이후의 글자를 ft_split 으로 : 로 나눠서 저장한다.
+	check_argc(argc);
+	ft_memset(&arg, 0, sizeof(arg));
+	check_file(&arg, argv);
 	arg.path = get_path_envp(envp);
-	while (*arg.path)
-	{
-		printf("path: %s\n", *arg.path);
-		arg.path++;
-	}
-	//command를 가져온 다음 실행가능한 PATH를 확인한다.
-	arg.cmd_arg1 = ft_split(argv[2], ' ');
-	arg.cmd_arg2 = ft_split(argv[3], ' ');
-	if (arg.cmd_arg1 == NULL || arg.cmd_arg2 == NULL)
-		perror("cmd missing error");
-	arg.cmd1 = get_cmd_argv(arg.path, arg.cmd_arg1[0]);
-	arg.cmd2 = get_cmd_argv(arg.path, arg.cmd_arg2[0]);
+	//argv[2], argv[3]의 command를 각각 띄어쓰기를 기준으로 split
+	arg.cmd1 = ft_split(argv[2], ' ');
+	arg.cmd2 = ft_split(argv[3], ' ');
 	if (arg.cmd1 == NULL || arg.cmd2 == NULL)
+		perror("cmd missing error");
+	arg.cmd1_path = get_cmd_argv(arg.path, arg.cmd1[0]);
+	arg.cmd2_path = get_cmd_argv(arg.path, arg.cmd2[0]);
+	if (arg.cmd1_path == NULL || arg.cmd2_path == NULL)
 		perror("path or cmd error");
+	printf("%s, %s \n", arg.cmd1_path, arg.cmd2_path);
+	free_2d_array(arg.path);
+	run_fork(&arg, envp);
+
+	//free
+	free(arg.cmd1_path);
+	free(arg.cmd2_path);
+	free_2d_array(arg.cmd1);
+	free_2d_array(arg.cmd2);
 }
 
 //에러 함수 처리

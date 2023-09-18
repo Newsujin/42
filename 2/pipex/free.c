@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/01 21:18:11 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/18 20:40:58 by spark2           ###   ########.fr       */
+/*   Created: 2023/09/18 20:15:30 by spark2            #+#    #+#             */
+/*   Updated: 2023/09/18 20:20:30 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	print_error(char *err_msg)
+void	free_2d_array(char **str)
 {
-	write(1, err_msg, ft_strlen(err_msg));
-	exit(1);
+	int	i;
+
+	i = 0;
+	while (str[i])
+		free(str[i++]);
+	free(str);
 }

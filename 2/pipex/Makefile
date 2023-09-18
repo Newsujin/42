@@ -4,7 +4,7 @@ SRCS = $(wildcard *.c)
 
 OBJS = $(SRCS:.c=.o)
 
-CC = cc -Wall -Werror -Wextra
+CC = cc -Wall -Werror -Wextra #-fsanitize=address
 
 LIBFT = ./libft/libft.a
 
