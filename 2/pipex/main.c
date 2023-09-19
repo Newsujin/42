@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 19:12:18 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/19 21:25:18 by spark2           ###   ########.fr       */
+/*   Updated: 2023/09/19 22:50:35 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ int	main(int argc, char **argv, char **envp)
 	printf("%s, %s \n", arg.cmd1_path, arg.cmd2_path);
 	free_2d_array(arg.path);
 	dup2(arg.infile, STDIN_FILENO);
-	//dup2(arg.outfile, STDOUT_FILENO);
+	dup2(arg.outfile, STDOUT_FILENO);
 	close(arg.infile);
-	//close(arg.outfile);
-	int	i = 0;
-	while (++i < 3)
+	close(arg.outfile);
+	int	i = -1;
+	while (++i < 2)
 	{
 		run_fork(&arg, envp, i);
 		printf("adfasdf\n");
