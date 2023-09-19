@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 19:12:18 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/18 20:46:01 by spark2           ###   ########.fr       */
+/*   Updated: 2023/09/19 21:25:18 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,18 @@ int	main(int argc, char **argv, char **envp)
 		perror("path or cmd error");
 	printf("%s, %s \n", arg.cmd1_path, arg.cmd2_path);
 	free_2d_array(arg.path);
-	run_fork(&arg, envp);
-
+	dup2(arg.infile, STDIN_FILENO);
+	//dup2(arg.outfile, STDOUT_FILENO);
+	close(arg.infile);
+	//close(arg.outfile);
+	int	i = 0;
+	while (++i < 3)
+	{
+		run_fork(&arg, envp, i);
+		printf("adfasdf\n");
+	}
+	close(arg.pipe_fd[0]);
+	close(arg.pipe_fd[1]);
 	//free
 	free(arg.cmd1_path);
 	free(arg.cmd2_path);

@@ -14,18 +14,18 @@ $(NAME) : $(OBJS) $(LIBFT)
 	$(CC) -o $@ $^ -L ./libft -lft
 
 $(LIBFT) :
-	make -C ./libft all
+	@make -C ./libft all
 
 %.o : %.c
-	$(CC) -c $< -o $@
+	@$(CC) -c $< -o $@
 
 clean :
 	rm -rf $(OBJS)
-	make -C ./libft clean
+	@make -C ./libft clean
 
 fclean : clean
 	rm -rf $(NAME)
-	make -C ./libft fclean
+	@make -C ./libft fclean
 
 re : fclean all
 
