@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 21:18:11 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/18 20:40:58 by spark2           ###   ########.fr       */
+/*   Updated: 2023/09/20 22:14:23 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	print_error(char *err_msg)
 {
-	write(1, err_msg, ft_strlen(err_msg));
+	// write(1, err_msg, ft_strlen(err_msg));
+	perror(err_msg);
 	exit(1);
 }
+
+// void
