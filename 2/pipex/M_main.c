@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   M_main.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 19:12:18 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/20 22:27:51 by spark2           ###   ########.fr       */
+/*   Updated: 2023/09/21 21:39:11 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ int	main(int argc, char **argv, char **envp)
 	arg.cmd2_path = get_cmd_argv(arg.path, arg.cmd2[0]);
 	if (arg.cmd1_path == NULL || arg.cmd2_path == NULL)
 		print_error("path or cmd error");
-	free_2d_array(arg.path);
 	run_fork(&arg, envp);
 	free(arg.cmd1_path);
 	free(arg.cmd2_path);
+	free_2d_array(arg.path);
 	free_2d_array(arg.cmd1);
 	free_2d_array(arg.cmd2);
 	// atexit(leaks);

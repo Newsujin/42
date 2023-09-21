@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run.c                                              :+:      :+:    :+:   */
+/*   M_run.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 20:33:01 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/20 22:27:24 by spark2           ###   ########.fr       */
+/*   Updated: 2023/09/21 21:50:30 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	run_fork(t_arg *arg, char **envp)
 				infile_to_pipe(arg, envp);
 			else
 				pipe_to_outfile(arg, envp);
+			// get_cmd_argv(arg->path, arg->cmd1[cnt]); //
+			// execve(arg->)
 		}
 		else
 			parent_work(arg);
