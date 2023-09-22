@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 19:32:37 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/21 21:39:14 by spark2           ###   ########.fr       */
+/*   Updated: 2023/09/22 17:30:52 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ char	*get_cmd_argv(char **path, char *cmd)
 		free(tmp);
 	}
 	free(path_cmd);
+	print_error("wrong command\n");
 	return (NULL);
 }

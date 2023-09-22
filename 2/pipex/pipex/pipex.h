@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 19:12:37 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/20 22:26:42 by spark2           ###   ########.fr       */
+/*   Updated: 2023/09/21 22:27:05 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,23 @@
 # include <stdlib.h>
 # include <stdio.h>
 
+typedef struct s_cmd_arg
+{
+	char	**arg_arr;
+}	t_cmd_arg;
+
+typedef struct s_cmd
+{
+	// char		**cmd;
+	t_cmd_arg	*cmd_arg;
+}	t_cmd;
+
 typedef struct s_arg
 {
 	int		infile;
 	int		outfile;
 	char	**path;
-	char	**cmd1;
-	char	**cmd2;
+	t_cmd	cmd;
 	char	*cmd1_path;
 	char	*cmd2_path;
 	int		pipe_fd[2];
@@ -42,8 +52,8 @@ char	*ft_strjoin(char const *s1, char const *s2);
 void	run_fork(t_arg *arg, char **envp);
 void	free_2d_array(char **str);
 void	print_error(char *err_msg);
-void	infile_to_pipe(t_arg *arg, char **envp);
-void	pipe_to_outfile(t_arg *arg, char **envp);
+void	infile_to_pipe(t_arg *arg);
+void	pipe_to_outfile(t_arg *arg);
 void	parent_work(t_arg *arg);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 20:33:01 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/21 21:50:30 by spark2           ###   ########.fr       */
+/*   Updated: 2023/09/22 17:28:47 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,17 @@ void	run_fork(t_arg *arg, char **envp)
 		if (pipe(arg->pipe_fd) < 0)
 			print_error("pipe error");
 		arg->pid = fork();
+		// printf("%d\n", arg->pid);
 		if (arg->pid == -1)
 			print_error("fork error");
 		else if (arg->pid == 0)
 		{
+			// sleep(30);
 			if (cnt == 0)
-				infile_to_pipe(arg, envp);
+				infile_to_pipe(arg);
 			else
-				pipe_to_outfile(arg, envp);
-			// get_cmd_argv(arg->path, arg->cmd1[cnt]); //
-			// execve(arg->)
+				pipe_to_outfile(arg);
+			execve(get_cmd_argv(arg->path, arg->cmd.cmd_arg[cnt].arg_arr[0]),arg->cmd.cmd_arg[cnt].arg_arr, envp); //
 		}
 		else
 			parent_work(arg);
@@ -42,23 +43,23 @@ void	run_fork(t_arg *arg, char **envp)
 }
 
 /* STDIN: infile, STDOUT: pipe, execve */
-void	infile_to_pipe(t_arg *arg, char **envp)
+void	infile_to_pipe(t_arg *arg)
 {
 	close(arg->pipe_fd[0]);
 	dup2(arg->infile, STDIN_FILENO);
 	dup2(arg->pipe_fd[1], STDOUT_FILENO);
 	close(arg->infile);
 	close(arg->pipe_fd[1]);
-	execve(arg->cmd1_path, arg->cmd1, envp);
+	// execve(arg->cmd1_path, arg->cmd1, envp);
 }
 
 /* STDOUT: outfile, execve */
-void	pipe_to_outfile(t_arg *arg, char **envp)
+void	pipe_to_outfile(t_arg *arg)
 {
 	close(arg->pipe_fd[1]);
 	dup2(arg->outfile, STDOUT_FILENO);
 	close(arg->outfile);
-	execve(arg->cmd2_path, arg->cmd2, envp);
+	// execve(arg->cmd2_path, arg->cmd2, envp);
 }
 
 /* STDIN: pipe */
