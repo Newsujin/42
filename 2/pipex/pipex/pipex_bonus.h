@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 19:12:37 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/23 21:23:32 by spark2           ###   ########.fr       */
+/*   Updated: 2023/09/23 21:37:00 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#ifndef PIPEX_BONUS_H
+# define PIPEX_BONUS_H
 
 # include "./libft/libft.h"
 # include <fcntl.h>
@@ -40,19 +40,19 @@ typedef struct s_arg
 }	t_arg;
 
 void	check_argc(int argc);
-void	check_file(t_arg *arg, char **argv);
-// char	**get_path_envp(char **envp);
+void	check_file(t_arg *arg, int argc, char **argv);
 void	get_path_envp(t_arg *arg, char **envp);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	**ft_split(char const *s, char c);
 char	*get_cmd_path(char **path, char *cmd);
 char	*ft_strjoin(char const *s1, char const *s2);
-void	set_cmd(t_arg *arg, t_cmd *cmd, char **argv);
-void	run_fork(t_arg *arg, t_cmd *cmd, char **envp);
-void	run_free(t_arg *arg, t_cmd *cmd);
+void	set_cmd(t_arg *arg, t_cmd *cmd, int argc, char **argv);
+void	run_fork(t_arg  *arg, t_cmd *cmd, int argc, char **envp);
+void	run_free(t_arg *arg, t_cmd *cmd, int argc);
 void	free_2d_array(char **str);
 void	print_error(char *err_msg);
 void	infile_to_pipe(t_arg *arg);
+void	pipe_to_pipe(t_arg *arg);
 void	pipe_to_outfile(t_arg *arg);
 void	parent_work(t_arg *arg);
 

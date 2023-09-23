@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   M_path.c                                           :+:      :+:    :+:   */
+/*   B_path_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 19:32:37 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/23 21:24:26 by spark2           ###   ########.fr       */
+/*   Updated: 2023/09/23 21:36:49 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 /* 환경변수에서 PATH를 찾아서 PATH= 이후의 글자를 ft_split 으로 : 를 기준으로 나눠서 저장 */
 void	get_path_envp(t_arg *arg, char **envp)
@@ -43,6 +43,7 @@ char	*get_cmd_path(char **path, char *cmd)
 		free(tmp);
 	}
 	free(path_cmd);
+	printf("here\n");
 	print_error("wrong command error\n");
 	return (NULL);
 }

@@ -1,32 +1,40 @@
 NAME = pipex
+BONUS_NAME = pipex_bonus
 
-SRCS = $(wildcard *.c)
+SRCS = $(wildcard M*.c)
+BONUS_SRCS = $(wildcard *bonus.c)
 
 OBJS = $(SRCS:.c=.o)
+BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
-CC = cc -Wall -Werror -Wextra -g #-fsanitize=address
+CC = cc -Wall -Werror -Wextra #-fsanitize=address
 
 LIBFT = ./libft/libft.a
 
 all : $(NAME)
 
+bonus : $(BONUS_NAME)
+
 $(NAME) : $(OBJS) $(LIBFT)
 	$(CC) -o $@ $^ -L ./libft -lft
 
+$(BONUS_NAME) : $(BONUS_OBJS) $(LIBFT)
+	$(CC) -o $@ $^ -L ./libft -lft
+
 $(LIBFT) :
-	@make -C ./libft all
+	make -C ./libft all
 
 %.o : %.c
-	@$(CC) -c $< -o $@
+	$(CC) -c $< -o $@
 
 clean :
-	rm -rf $(OBJS)
-	@make -C ./libft clean
+	rm -rf $(OBJS) $(BONUS_OBJS)
+	make -C ./libft clean
 
 fclean : clean
-	rm -rf $(NAME)
-	@make -C ./libft fclean
+	rm -rf $(NAME) $(BONUS_NAME)
+	make -C ./libft fclean
 
 re : fclean all
 
-.PHONY : all clean fclean re
+.PHONY : all clean fclean re bonus

@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   M_free.c                                           :+:      :+:    :+:   */
+/*   M_set_cmd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/18 20:15:30 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/23 21:03:09 by spark2           ###   ########.fr       */
+/*   Created: 2023/09/23 20:59:50 by spark2            #+#    #+#             */
+/*   Updated: 2023/09/23 21:21:36 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	free_2d_array(char **str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		free(str[i++]);
-	free(str);
-}
-
-void	run_free(t_arg *arg, t_cmd *cmd)
+void	set_cmd(t_arg *arg, t_cmd *cmd, char **argv)
 {
 	int	i;
 
 	i = -1;
-	free_2d_array(arg->path);
-	free_2d_array(arg->path_plus_cmd);
+	cmd->arg = (t_cmd_arg *)malloc(sizeof(t_cmd_arg) * 3);
+	arg->path_plus_cmd = (char **)malloc(sizeof(char *) * 3);
 	while (++i < 2)
-		free_2d_array(cmd->arg[i].arr);
-	free(cmd->arg);
+	{
+		cmd->arg[i].arr = ft_split(argv[i + 2], ' ');
+		if (cmd->arg[i].arr == NULL)
+			print_error("cmd split error");
+		arg->path_plus_cmd[i] = get_cmd_path(arg->path, cmd->arg[i].arr[0]);
+	}
+	cmd->arg[i].arr = 0;
+	cmd->arg[i].arr = 0;
 }

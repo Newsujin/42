@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   M__check.c                                         :+:      :+:    :+:   */
+/*   B_main_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/18 19:46:12 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/21 21:39:02 by spark2           ###   ########.fr       */
+/*   Created: 2023/09/01 19:12:18 by spark2            #+#    #+#             */
+/*   Updated: 2023/09/23 21:36:41 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
-void	check_argc(int argc)
+void	check()
 {
-	if (argc != 5)
-	{
-		perror("argument error");
-		exit(1);
-	}
+	system("leaks pipex_bonus");
 }
 
-void	check_file(t_arg *arg, char **argv)
+int	main(int argc, char **argv, char **envp)
 {
-	arg->infile = open(argv[1], O_RDONLY);
-	if (arg->infile == -1)
-	{
-		perror("Could not open infile");
-		exit(1);
-	}
-	arg->outfile = open(argv[4], O_RDWR | O_CREAT | O_TRUNC, 0644);
-	if (arg->outfile == -1)
-	{
-		perror("Outfile error");
-		exit(1);
-	}
+	t_arg	arg;
+	t_cmd	cmd;
+
+	ft_memset(&arg, 0, sizeof(t_arg));
+	check_argc(argc);
+	check_file(&arg, argc, argv);
+	get_path_envp(&arg, envp);
+	set_cmd(&arg, &cmd, argc, argv);
+	run_fork(&arg, &cmd, argc, envp);
+	run_free(&arg, &cmd, argc);
+	// atexit(check);
 }

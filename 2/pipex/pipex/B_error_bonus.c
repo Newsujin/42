@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   M_main.c                                           :+:      :+:    :+:   */
+/*   B_error_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/01 19:12:18 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/23 21:31:15 by spark2           ###   ########.fr       */
+/*   Created: 2023/09/01 21:18:11 by spark2            #+#    #+#             */
+/*   Updated: 2023/09/23 20:02:17 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
-void	leaks()
+void	print_error(char *err_msg)
 {
-	system("leaks pipex");
+	perror(err_msg);
+	exit(1);
 }
 
-int	main(int argc, char **argv, char **envp)
-{
-	t_arg	arg;
-	t_cmd	cmd;
-
-	ft_memset(&arg, 0, sizeof(t_arg));
-	check_argc(argc);
-	check_file(&arg, argv);
-	get_path_envp(&arg, envp);
-	set_cmd(&arg, &cmd, argv);
-	run_fork(&arg, &cmd, envp);
-	run_free(&arg, &cmd);
-	// atexit(leaks);
-}
+// void

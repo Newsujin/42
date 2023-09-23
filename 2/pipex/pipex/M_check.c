@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   M_main.c                                           :+:      :+:    :+:   */
+/*   M__check.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/01 19:12:18 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/23 21:31:15 by spark2           ###   ########.fr       */
+/*   Created: 2023/09/18 19:46:12 by spark2            #+#    #+#             */
+/*   Updated: 2023/09/23 21:17:32 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	leaks()
+void	check_argc(int argc)
 {
-	system("leaks pipex");
+	if (argc != 5)
+	{
+		write(1, "argument error\n", 15);
+		exit(1);
+	}
 }
 
-int	main(int argc, char **argv, char **envp)
+void	check_file(t_arg *arg, char **argv)
 {
-	t_arg	arg;
-	t_cmd	cmd;
-
-	ft_memset(&arg, 0, sizeof(t_arg));
-	check_argc(argc);
-	check_file(&arg, argv);
-	get_path_envp(&arg, envp);
-	set_cmd(&arg, &cmd, argv);
-	run_fork(&arg, &cmd, envp);
-	run_free(&arg, &cmd);
-	// atexit(leaks);
+	arg->infile = open(argv[1], O_RDONLY);
+	if (arg->infile == -1)
+	{
+		perror("Could not open infile");
+		exit(1);
+	}
+	arg->outfile = open(argv[4], O_RDWR | O_CREAT | O_TRUNC, 0644);
+	if (arg->outfile == -1)
+	{
+		perror("Outfile error");
+		exit(1);
+	}
 }
