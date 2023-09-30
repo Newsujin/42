@@ -31,5 +31,5 @@ int	main(int argc, char **argv, char **envp)
 	set_cmd(&arg, &cmd, argc, argv);
 	run_fork(&arg, &cmd, argc, envp);
 	run_free(&arg, &cmd, argc);
-	// atexit(check);
+	atexit(check);
 }

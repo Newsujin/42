@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 19:12:18 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/30 16:38:41 by spark2           ###   ########.fr       */
+/*   Updated: 2023/09/30 18:04:17 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ int	main(int argc, char **argv, char **envp)
 	set_cmd(&arg, &cmd, argv);
 	run_fork(&arg, &cmd, envp);
 	run_free(&arg, &cmd);
-	// atexit(leaks);
+	atexit(leaks);
 }

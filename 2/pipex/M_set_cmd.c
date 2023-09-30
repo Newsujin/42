@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 20:59:50 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/29 18:01:27 by spark2           ###   ########.fr       */
+/*   Updated: 2023/09/30 17:43:46 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ void	set_cmd(t_arg *arg, t_cmd *cmd, char **argv)
 	while (++i < 2)
 	{
 		cmd->arg[i].arr = ft_split(argv[i + 2], ' ');
+		int j = 0;
+		while (cmd->arg[i].arr[j])
+			j++;
+		printf("arr_cnt: %d\n", j);
 		if (cmd->arg[i].arr == NULL)
 			print_error("cmd split error");
 		arg->path_plus_cmd[i] = get_cmd_path(arg->path, cmd->arg[i].arr[0]);

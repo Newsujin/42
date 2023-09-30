@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 20:15:30 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/29 18:32:05 by spark2           ###   ########.fr       */
+/*   Updated: 2023/09/30 18:08:20 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,14 @@ void	run_free(t_arg *arg, t_cmd *cmd)
 	int	i;
 
 	i = -1;
-	free_2d_array(arg->path);
-	free_2d_array(arg->path_plus_cmd);
+	while (arg->path[++i])
+		free(arg->path[i]);
+	free(arg->path);
+	i = -1;
+	while (++i < 2)
+		free(arg->path_plus_cmd[i]);
+	free(arg->path_plus_cmd);
+	i = -1;
 	while (++i < 2)
 		free_2d_array(cmd->arg[i].arr);
 	free(cmd->arg);
