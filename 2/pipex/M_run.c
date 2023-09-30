@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 20:33:01 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/30 16:49:11 by spark2           ###   ########.fr       */
+/*   Updated: 2023/09/30 21:58:07 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@ void	run_fork(t_arg *arg, t_cmd *cmd, char **envp)
 				infile_to_pipe(arg);
 			else
 				pipe_to_outfile(arg);
+
 			// if (!arg->path_plus_cmd[i])
 			// 	print_error("exec error(권한X or 틀린 명령어)");
-			execve(arg->path_plus_cmd[i], cmd->arg[i].arr, envp);
+			execve(get_cmd_path(arg->path, cmd->arg[i].arr[0]), cmd->arg[i].arr, envp);
 		}
 		else
 			parent_work(arg);

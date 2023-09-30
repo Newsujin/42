@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 20:52:12 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/27 20:45:54 by spark2           ###   ########.fr       */
+/*   Updated: 2023/09/30 21:21:07 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,8 @@ int		split_line(char **backup, char **res);
 void	ft_free_gnl(char **backup, char **res);
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *str);
-ssize_t	ft_gnl_strchr(const char *s, int c);
+ssize_t	ft_strchr_gnl(const char *s, int c);
 char	*ft_substr(char const *s, size_t start, size_t len);
 char	*ft_strdup(const char *src);
-char	*ft_gnl_strjoin(char *s1, char const *s2);
-// char	*ft_strjoin(char *s1, char const *s2);
 
 #endif

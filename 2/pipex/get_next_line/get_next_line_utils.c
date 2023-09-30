@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 17:46:19 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/27 20:32:24 by spark2           ###   ########.fr       */
+/*   Updated: 2023/09/30 21:20:14 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-ssize_t	ft_gnl_strchr(const char *s, int c)
+ssize_t	ft_strchr_gnl(const char *s, int c)
 {
 	ssize_t	i;
 
@@ -85,28 +85,3 @@ char	*ft_strdup(const char *src)
 	dst[i] = '\0';
 	return (dst);
 }
-
-// char	*ft_strjoin(char *s1, char const *s2)
-// {
-// 	size_t	len;
-// 	size_t	i;
-// 	char	*str;
-
-// 	len = ft_strlen(s1) + ft_strlen(s2);
-// 	str = malloc(sizeof(char) * (len + 1));
-// 	if (!str)
-// 		return (0);
-// 	i = 0;
-// 	while (*s1)
-// 	{
-// 		str[i] = *s1++;
-// 		i++;
-// 	}
-// 	while (*s2)
-// 	{
-// 		str[i] = *s2++;
-// 		i++;
-// 	}
-// 	str[i] = 0;
-// 	return (str);
-// }

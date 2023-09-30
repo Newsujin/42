@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 20:15:30 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/30 18:07:50 by spark2           ###   ########.fr       */
+/*   Updated: 2023/09/30 22:13:11 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	run_free(t_arg *arg, t_cmd *cmd, int argc)
 		free(arg->path[i]);
 	free(arg->path);
 	i = -1;
-	while (++i < 2)
+	while (++i < argc - 3 - arg->here_flag)
 		free(arg->path_plus_cmd[i]);
 	free(arg->path_plus_cmd);
 	i = -1;

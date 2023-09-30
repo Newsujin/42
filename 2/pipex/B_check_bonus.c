@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 19:46:12 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/29 21:37:09 by spark2           ###   ########.fr       */
+/*   Updated: 2023/09/30 22:35:53 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	check_argc(int argc)
 	}
 }
 
-void	check_file(t_arg *arg, int argc, char **argv)
+void	set_file(t_arg *arg, int argc, char **argv)
 {
 	if (!ft_strncmp(argv[1], "here_doc", 8))
 	{
@@ -33,8 +33,4 @@ void	check_file(t_arg *arg, int argc, char **argv)
 		arg->infile = open(argv[1], O_RDONLY);
 		arg->outfile = open(argv[argc - 1], O_RDWR | O_CREAT | O_TRUNC, 0644);
 	}
-	// if (arg->infile == -1)
-	// 	print_error("Could not open infile");
-	// if (arg->outfile == -1)
-	// 	print_error("Outfile error");
 }

@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 19:12:18 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/30 18:04:17 by spark2           ###   ########.fr       */
+/*   Updated: 2023/09/30 22:36:06 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv, char **envp)
 
 	ft_memset(&arg, 0, sizeof(t_arg));
 	check_argc(argc);
-	check_file(&arg, argv);
+	set_file(&arg, argv);
 	get_path_envp(&arg, envp);
 	set_cmd(&arg, &cmd, argv);
 	run_fork(&arg, &cmd, envp);

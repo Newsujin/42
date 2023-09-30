@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 19:12:37 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/30 17:04:31 by spark2           ###   ########.fr       */
+/*   Updated: 2023/09/30 22:36:06 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_arg
 }	t_arg;
 
 void	check_argc(int argc);
-void	check_file(t_arg *arg, int argc, char **argv);
+void	set_file(t_arg *arg, int argc, char **argv);
 void	get_path_envp(t_arg *arg, char **envp);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	**ft_split(char const *s, char c);

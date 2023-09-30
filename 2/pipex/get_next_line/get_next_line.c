@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 20:53:26 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/29 16:56:15 by spark2           ###   ########.fr       */
+/*   Updated: 2023/09/30 21:20:51 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main_loop(char **backup, int fd, ssize_t *rd_size)
 	char		buf[BUFFER_SIZE + 1];
 	char		*tmp;
 
-	while (ft_gnl_strchr(*backup, '\n') == -1)
+	while (ft_strchr_gnl(*backup, '\n') == -1)
 	{
 		*rd_size = read(fd, buf, BUFFER_SIZE);
 		if (*rd_size == -1)
@@ -43,7 +43,7 @@ int	split_line(char **backup, char **res)
 	ssize_t	i;
 	char	*tmp;
 
-	i = ft_gnl_strchr(*backup, '\n');
+	i = ft_strchr_gnl(*backup, '\n');
 	if (i == -1)
 		i = ft_strlen(*backup);
 	*res = ft_substr(*backup, 0, i + 1);

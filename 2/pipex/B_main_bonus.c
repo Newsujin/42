@@ -24,12 +24,13 @@ int	main(int argc, char **argv, char **envp)
 
 	ft_memset(&arg, 0, sizeof(t_arg));
 	check_argc(argc);
-	check_file(&arg, argc, argv);
+	set_file(&arg, argc, argv);
 	if (arg.here_flag)
 		run_heredoc(&arg, argv[2]);
 	get_path_envp(&arg, envp);
 	set_cmd(&arg, &cmd, argc, argv);
 	run_fork(&arg, &cmd, argc, envp);
 	run_free(&arg, &cmd, argc);
+	unlink("/tmp/.infile"); //다른 곳에서 exit 하는 경우에도 필요함
 	atexit(check);
 }
