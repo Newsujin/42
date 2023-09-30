@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 19:32:37 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/26 17:48:55 by spark2           ###   ########.fr       */
+/*   Updated: 2023/09/29 22:54:05 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ char	*get_cmd_path(char **path, char *cmd)
 	char	*path_cmd;
 	char	*tmp;
 
+	if (!access(cmd, X_OK))
+	{
+		cmd = ft_strdup(cmd);
+		return (cmd);
+	}
 	path_cmd = ft_strjoin("/", cmd);
 	flag = 0;
 	i = -1;
@@ -43,6 +48,5 @@ char	*get_cmd_path(char **path, char *cmd)
 		free(tmp);
 	}
 	free(path_cmd);
-	print_error("wrong command error\n");
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 19:12:18 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/27 20:33:34 by spark2           ###   ########.fr       */
+/*   Updated: 2023/09/30 16:38:41 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	main(int argc, char **argv, char **envp)
 	t_arg	arg;
 	t_cmd	cmd;
 
-	printf("argc: %d\n", argc);
 	ft_memset(&arg, 0, sizeof(t_arg));
 	check_argc(argc);
 	check_file(&arg, argv);

@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 20:53:26 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/27 20:45:36 by spark2           ###   ########.fr       */
+/*   Updated: 2023/09/29 16:56:15 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ char	*get_next_line(int fd)
 	return (res);
 }
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strncmp_gnl(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
 
@@ -111,24 +111,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 		i++;
 	}
+	if (s2[i] != '\n')
+		return (1);
 	return (0);
 }
-
-// #include <stdio.h>
-// #include <fcntl.h>
-// int	main(int argc, char **argv)
-// {
-// 	char *gnl;
-// 	int	fd;
-// 	fd = open("hd_infile", O_CREAT | O_WRONLY | O_TRUNC, 0644);
-// 	if (fd == -1)
-// 		perror("파일 열기 실패");
-// 	while (1)
-// 	{
-// 		gnl = get_next_line(0);
-// 		if (!ft_strncmp(argv[2], gnl, ft_strlen(argv[2])))
-// 			break ;
-// 		write(fd, gnl, ft_strlen(gnl));
-// 		printf("res: %s", gnl);
-// 	}
-// }

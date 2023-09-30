@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 19:12:37 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/27 20:33:53 by spark2           ###   ########.fr       */
+/*   Updated: 2023/09/29 18:01:43 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_cmd_arg
 
 typedef struct s_cmd
 {
+	int			execfile;
 	t_cmd_arg	*arg;
 }	t_cmd;
 

@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 20:15:30 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/23 21:03:09 by spark2           ###   ########.fr       */
+/*   Updated: 2023/09/29 18:32:05 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	free_2d_array(char **str)
 {
 	int	i;
 
-	i = 0;
-	while (str[i])
-		free(str[i++]);
+	i = -1;
+	while (str[++i])
+		free(str[i]);
 	free(str);
 }
 
