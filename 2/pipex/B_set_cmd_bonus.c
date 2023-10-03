@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 20:23:06 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/29 22:15:26 by spark2           ###   ########.fr       */
+/*   Updated: 2023/10/03 17:16:05 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,12 @@ void	set_cmd(t_arg *arg, t_cmd *cmd, int argc, char **argv)
 		size = argc - 3;
 	}
 	cmd->arg = (t_cmd_arg *)malloc(sizeof(t_cmd_arg) * size);
-	arg->path_plus_cmd = (char **)malloc(sizeof(char *) * size);
 	while (++argv_idx < argc - 3)
 	{
 		cmd->arg[cmd_idx].arr = ft_split(argv[argv_idx + 2], ' ');
 		if (cmd->arg[cmd_idx].arr == NULL)
-			print_error("cmd split error");
-		arg->path_plus_cmd[cmd_idx] = get_cmd_path(arg->path, cmd->arg[cmd_idx].arr[0]);
+			print_error("cmd split error\n");
 		cmd_idx++;
 	}
-	cmd->arg[cmd_idx].arr = 0;
 	cmd->arg[cmd_idx].arr = 0;
 }

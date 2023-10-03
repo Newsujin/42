@@ -2,15 +2,15 @@ NAME = pipex
 BONUS_NAME = pipex_bonus
 
 SRCS = $(wildcard M*.c)
-BONUS_SRCS = $(wildcard *bonus.c)
+BONUS_SRCS = $(wildcard *bonus.c) $(wildcard get_next_line/*.c)
 
 OBJS = $(SRCS:.c=.o)
 BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
-CC = cc -Wall -Werror -Wextra -g #-fsanitize=address
+CC = cc -Wall -Werror -Wextra -g
 
 LIBFT = ./libft/libft.a
-GNL = ./get_next_line
+# GNL = ./get_next_line
 
 all : $(NAME)
 
@@ -20,7 +20,7 @@ $(NAME) : $(OBJS) $(LIBFT)
 	$(CC) -o $@ $^ -L ./libft -lft
 
 $(BONUS_NAME) : $(BONUS_OBJS) $(LIBFT)
-	$(CC) -o $@ $^ -L ./libft -lft -L $(GNL)
+	$(CC) -o $@ $^ -L ./libft -lft
 
 $(LIBFT) :
 	make -C ./libft all

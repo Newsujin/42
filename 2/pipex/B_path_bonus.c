@@ -6,13 +6,12 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 19:32:37 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/29 22:54:05 by spark2           ###   ########.fr       */
+/*   Updated: 2023/10/03 17:16:40 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
 
-/* 환경변수에서 PATH를 찾아서 PATH= 이후의 글자를 ft_split 으로 : 를 기준으로 나눠서 저장 */
 void	get_path_envp(t_arg *arg, char **envp)
 {
 	while (ft_strncmp("PATH", *envp, 4))
@@ -20,33 +19,28 @@ void	get_path_envp(t_arg *arg, char **envp)
 	arg->path = ft_split(*envp + 5, ':');
 }
 
-/* command를 가져온 다음 실행 가능한 PATH가 존재하는지 확인 */
 char	*get_cmd_path(char **path, char *cmd)
 {
-	int		i;
-	int		flag;
 	char	*path_cmd;
 	char	*tmp;
 
 	if (!access(cmd, X_OK))
-	{
-		cmd = ft_strdup(cmd);
-		return (cmd);
-	}
+		return (ft_strdup(cmd));
 	path_cmd = ft_strjoin("/", cmd);
-	flag = 0;
-	i = -1;
-	while (path[++i])
+	while (*path)
 	{
-		tmp = ft_strjoin(path[i], path_cmd);
-		flag = access(tmp, X_OK);
-		if (flag == 0)
+		tmp = ft_strjoin(*path, path_cmd);
+		if (!access(tmp, X_OK))
 		{
 			free(path_cmd);
 			return (tmp);
 		}
 		free(tmp);
+		path++;
 	}
 	free(path_cmd);
+	if (!access(cmd, F_OK))
+		print_error("permission denied\n");
+	print_error("command not found\n");
 	return (NULL);
 }

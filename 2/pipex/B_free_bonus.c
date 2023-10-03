@@ -6,23 +6,11 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 20:15:30 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/30 22:13:11 by spark2           ###   ########.fr       */
+/*   Updated: 2023/10/03 17:16:27 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
-
-// void	free_2d_array(t_arg *arg, int argc, char **str)
-// {
-// 	int	i;
-// 	(void)argc;
-// 	(void)arg;
-// 	i = 0;
-// 	while (str[i]) { //문제!!
-// 		free(str[i++]);
-// 	}
-// 	free(str);
-// }
 
 void	free_2d_array(char **str)
 {
@@ -34,32 +22,20 @@ void	free_2d_array(char **str)
 	free(str);
 }
 
-// void	run_free(t_arg *arg, t_cmd *cmd, int argc)
-// {
-// 	int	i;
-
-// 	i = -1;
-// 	free_2d_array(arg, argc, arg->path);
-// 	free_2d_array(arg, argc, arg->path_plus_cmd);
-// 	while (++i < argc - 3 - arg->here_flag)
-// 		free_2d_array(arg, argc, cmd->arg[i].arr);
-// 	free(cmd->arg);
-// }
-
 void	run_free(t_arg *arg, t_cmd *cmd, int argc)
 {
 	int	i;
 
-	i = -1;
-	while (arg->path[++i])
-		free(arg->path[i]);
-	free(arg->path);
-	i = -1;
-	while (++i < argc - 3 - arg->here_flag)
-		free(arg->path_plus_cmd[i]);
-	free(arg->path_plus_cmd);
+	free_2d_array(arg->path);
 	i = -1;
 	while (++i < argc - 3 - arg->here_flag)
 		free_2d_array(cmd->arg[i].arr);
 	free(cmd->arg);
+}
+
+void	print_error(char *err_msg)
+{
+	write(2, err_msg, ft_strlen(err_msg));
+	unlink("/tmp/.infile");
+	exit(1);
 }

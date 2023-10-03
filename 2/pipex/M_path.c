@@ -6,12 +6,11 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 19:32:37 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/30 22:36:20 by spark2           ###   ########.fr       */
+/*   Updated: 2023/10/03 15:26:00 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-// #include "./libft/ft_strjoin.c"
 
 /* 환경변수에서 PATH를 찾아서 PATH= 이후의 글자를 ft_split 으로 : 를 기준으로 나눠서 저장 */
 void	get_path_envp(t_arg *arg, char **envp)
@@ -42,6 +41,8 @@ char	*get_cmd_path(char **path, char *cmd)
 		path++;
 	}
 	free(path_cmd);
-	print_error("Cannot Execute");
+	if (!access(cmd, F_OK))
+		print_error("permission denied\n");
+	print_error("command not found\n");
 	return (NULL);
 }

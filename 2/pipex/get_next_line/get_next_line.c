@@ -6,7 +6,7 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 20:53:26 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/30 21:20:51 by spark2           ###   ########.fr       */
+/*   Updated: 2023/10/03 15:54:52 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main_loop(char **backup, int fd, ssize_t *rd_size)
 			break ;
 		buf[*rd_size] = 0;
 		tmp = *backup;
-		*backup = ft_strjoin(tmp, buf);
+		*backup = ft_strjoin_gnl(tmp, buf);
 		free(tmp);
 		if (!(*backup))
 			return (1);
@@ -45,7 +45,7 @@ int	split_line(char **backup, char **res)
 
 	i = ft_strchr_gnl(*backup, '\n');
 	if (i == -1)
-		i = ft_strlen(*backup);
+		i = ft_strlen_gnl(*backup);
 	*res = ft_substr(*backup, 0, i + 1);
 	if (!(*res))
 	{
@@ -54,7 +54,7 @@ int	split_line(char **backup, char **res)
 		return (1);
 	}
 	tmp = *backup;
-	*backup = ft_substr(tmp, i + 1, ft_strlen(tmp) - (i + 1));
+	*backup = ft_substr(tmp, i + 1, ft_strlen_gnl(tmp) - (i + 1));
 	if (!(*backup))
 	{
 		free(*res);

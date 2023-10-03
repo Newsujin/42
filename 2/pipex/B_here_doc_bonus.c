@@ -6,13 +6,11 @@
 /*   By: spark2 <spark2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 19:34:50 by spark2            #+#    #+#             */
-/*   Updated: 2023/09/30 22:10:05 by spark2           ###   ########.fr       */
+/*   Updated: 2023/10/03 17:05:45 by spark2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
-#include "get_next_line/get_next_line.c"
-#include "get_next_line/get_next_line_utils.c"
 
 void	run_heredoc(t_arg *arg, char *limiter)
 {
@@ -21,6 +19,7 @@ void	run_heredoc(t_arg *arg, char *limiter)
 	arg->infile = open("/tmp/.infile", O_CREAT | O_WRONLY | O_TRUNC, 0666);
 	while (1)
 	{
+		write(1, "heredoc> ", 9);
 		gnl = get_next_line(0);
 		if (!ft_strncmp_gnl(limiter, gnl, ft_strlen(limiter)))
 			break ;
