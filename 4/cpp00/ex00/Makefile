@@ -10,7 +10,7 @@ all : $(NAME)
 $(NAME) : $(OBJS)
 	$(CPP) -o $@ $^
 
-%.o : %.c
+%.o : %.cpp
 	$(CPP) -c $< -o $@
 
 clean :
