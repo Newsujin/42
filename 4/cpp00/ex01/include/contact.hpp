@@ -14,14 +14,6 @@ class Contact {
         std::string darkest_secret;
 
     public:
-        Contact();
-        Contact(
-        std::string _first_name,
-        std::string _last_name,
-        std::string _nick_name,
-        std::string _phone_number,
-        std::string _darkest_secret
-        );
         std::string getFirstName() const;
         std::string getLastName() const;
         std::string getNickName() const;
