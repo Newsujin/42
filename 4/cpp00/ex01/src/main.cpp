@@ -12,13 +12,13 @@ int main()
         if (std::cin.eof())
             break;
         if (cmd == "ADD")
-            phonebook.AddContact();
+            phonebook.Add();
         else if (cmd == "SEARCH")
-            phonebook.PrintInfo();
+            phonebook.Search();
         else if (cmd == "EXIT")
             break;
         else
-            std::cout << "wrong cmd!" << std::endl;
+            std::cout << std::endl << "That's wrong command!" << std::endl;
     }
     return (0);
 }

@@ -11,10 +11,10 @@ class PhoneBook {
         
     public:
         PhoneBook();
-        void AddContact();
-        void PrintInfo();
+        void Add();
+        void Search();
         void PrintContact(int index);
-        std::string getShortStr(std::string str);
+        std::string GetTenStr(std::string str);
 };
 
 #endif

@@ -22,7 +22,6 @@ class Contact {
         std::string _phone_number,
         std::string _darkest_secret
         );
-
         std::string getFirstName() const;
         std::string getLastName() const;
         std::string getNickName() const;
