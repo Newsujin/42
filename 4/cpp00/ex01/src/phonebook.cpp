@@ -1,4 +1,4 @@
-#include "phonebook.hpp"
+#include "Phonebook.hpp"
 
 PhoneBook::PhoneBook() : idx(0), size(0) {}
 
@@ -18,7 +18,7 @@ void    PhoneBook::Search()
 {
     if (this->size)
     {
-        std::cout << "---------------------------------------------" << std::endl;
+        std::cout << std::endl << "---------------------------------------------" << std::endl;
         std::cout << "|" << std::setw(10) << "index"
                 << "|" << std::setw(10) << "first name"
                 << "|" << std::setw(10) << "last name"
@@ -38,7 +38,7 @@ void    PhoneBook::Search()
                     << "|" << std::endl;
         }
         std::cout << "---------------------------------------------" << std::endl;
-    
+
     std::string index;
     std::cout << std::endl << "please enter index: ";
     std::getline(std::cin, index);

@@ -1,4 +1,4 @@
-#include "contact.hpp"
+#include "Contact.hpp"
 
 std::string Contact::getFirstName() const {return this->first_name;}
 std::string Contact::getLastName() const {return this->last_name;}
@@ -9,7 +9,7 @@ std::string Contact::getDarkestSecret() const {return this->darkest_secret;}
 void Contact::setFirstName()
 {
     while (true) {
-        std::cout << "First Name: ";
+        std::cout << std::endl << "First Name: ";
         std::getline(std::cin, first_name);
         if (std::cin.eof())
             exit(0);

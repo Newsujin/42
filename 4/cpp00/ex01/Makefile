@@ -1,9 +1,9 @@
 NAME = phonebook
 
-SRCS = src/main.cpp src/phonebook.cpp src/contact.cpp
+SRCS = src/main.cpp src/Phonebook.cpp src/Contact.cpp
 OBJS = $(SRCS:.cpp=.o)
 
-CPP = c++ -Wall -Wextra -Werror
+CPP = c++ -Wall -Wextra -Werror -std=c++98
 INCS = -I include
 
 all : $(NAME)

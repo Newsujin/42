@@ -3,7 +3,7 @@ NAME = megaphone
 SRCS = megaphone.cpp
 OBJS = $(SRCS:.cpp=.o)
 
-CPP = c++ -Wall -Wextra -Werror
+CPP = c++ -Wall -Wextra -Werror -std=c++98
 
 all : $(NAME)
 
