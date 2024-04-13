@@ -1,4 +1,4 @@
-NAME = account
+NAME = Dreams
 
 SRCS = Account.cpp tests.cpp
 OBJS = $(SRCS:.cpp=.o)
