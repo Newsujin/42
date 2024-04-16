@@ -1,4 +1,4 @@
-NAME = zombie
+NAME = a.out
 
 SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
