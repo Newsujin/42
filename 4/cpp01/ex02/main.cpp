@@ -6,12 +6,12 @@ int main(void)
 	std::string *stringPTR = &str;
 	std::string &stringREF = str;
 
-	std::cout << "address" << std::endl;
+	std::cout << "* address *" << std::endl;
 	std::cout << &str << std::endl;
 	std::cout << stringPTR << std::endl;
-	std::cout << &stringREF << std::endl;
+	std::cout << &stringREF << std::endl << std::endl;
 
-	std::cout << "value" << std::endl;
+	std::cout << "* value *" << std::endl;
 	std::cout << str << std::endl;
 	std::cout << *stringPTR << std::endl;
 	std::cout << stringREF << std::endl;
