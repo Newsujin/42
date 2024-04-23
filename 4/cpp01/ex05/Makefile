@@ -1,6 +1,6 @@
 NAME = a.out
 
-SRCS = main.cpp
+SRCS = main.cpp Harl.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 CPP = c++ -Wall -Wextra -Werror -std=c++98
