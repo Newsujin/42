@@ -6,16 +6,16 @@ int main(int ac, char **av)
     if (ac != 4)
         return (std::cout << "argc error" << std::endl, 1);
 
-    if (!std::strlen(av[1]) || !std::strlen(av[2]))
+    if (!av[1][0] || !av[2][0])
         return (std::cout << "argv length error" << std::endl, 1);
 
     std::string infile = av[1];
-    std::ifstream ifs(infile);
+    std::ifstream ifs(infile.c_str());
     if (ifs.fail())
         return (std::cout << infile << " open error" << std::endl, 1);
 
     std::string outfile = infile + ".replace";
-    std::ofstream ofs(outfile);
+    std::ofstream ofs(outfile.c_str());
     if (ofs.fail())
         return (std::cout << outfile << " open error" << std::endl, 1);
    
