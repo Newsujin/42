@@ -3,14 +3,15 @@
 
 # include <iostream>
 
-class ClapTrap {
+class ClapTrap
+{
 	private:
 		std::string	_name;
-		int			_hit_points = 10;
-		int			_energy_points = 10;
-		int			_attack_damage = 0;
+		int			_hit_points;
+		int			_energy_points;
 		ClapTrap();
 	public:
+		int			_attack_damage;
 		ClapTrap(std::string name);
 		ClapTrap(const ClapTrap& rhs);
 		ClapTrap &operator=(const ClapTrap& rhs);
