@@ -32,5 +32,8 @@ FragTrap::~FragTrap()
 
 void FragTrap::highFivesGuys()
 {
-	std::cout << "\033[33mHey Let's do a high five!\033[0m" << std::endl;
+	if (!_hit_points)
+		std::cout << "\033[31mFragTrap " << _name << " has no power to high five ...\033[0m" << std::endl;
+	else
+		std::cout << "\033[33mFragTrap " << _name << " says: Let's do a high five!\033[0m" << std::endl;
 }

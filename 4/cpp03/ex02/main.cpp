@@ -20,7 +20,7 @@ int	main(void)
     b.attack("A");
     c.highFivesGuys();
     std::cout << "----------------------------------------------------------" << std::endl;
-    
+
     std::cout << a.getName() << "'s hit points: " << a.getHitPoints() << std::endl;
 	std::cout << a.getName() << "'s energy points: " << a.getEnergyPoints() << std::endl;
 	std::cout << a.getName() << "'s attack damage: " << a.getAttackDamage() << std::endl;
