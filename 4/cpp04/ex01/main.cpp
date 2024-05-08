@@ -2,13 +2,15 @@
 #include "Dog.hpp"
 #include "WrongCat.hpp"
 
-void f()
-{
-    system("leaks a.out");
-}
+// void f()
+// {
+//     system("leaks a.out");
+// }
+
 int main()
 {
-    atexit(f);
+    // atexit(f);
+
     // const Animal* j = new Dog();
     // const Animal* i = new Cat();
     // j->makeSound();
@@ -28,9 +30,11 @@ int main()
     for(int i = 0; i < 4; i++)
         ani[i]->makeSound();
     for(int i = 0; i < 4; i++)
-        delete ani[i];
+    {
+		delete ani[i];
+	}
 	std::cout << "-----------------------------------" << std::endl;
-    
+
 	Dog *puppy = new Dog();
 	Cat *kitty = new Cat();
 	std::cout << "[puppy] " << puppy->getDogIdea(10) << std::endl;
@@ -57,6 +61,6 @@ int main()
     delete kitty;
     delete som;
     delete gamja;
-    
+
     return 0;
 }

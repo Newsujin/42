@@ -2,8 +2,15 @@
 #include "Cat.hpp"
 #include "WrongCat.hpp"
 
+// void f()
+// {
+//     system("leaks a.out");
+// }
+
 int main()
 {
+    // atexit(f);
+	
     const Animal* meta = new Animal();
     const Animal* j = new Dog();
     const Animal* i = new Cat();

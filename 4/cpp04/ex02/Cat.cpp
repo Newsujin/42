@@ -7,7 +7,7 @@ Cat::Cat() : Animal()
     brain = new Brain();
 }
 
-Cat::Cat(const Cat &rhs) // 부모 복사생성자 호출 안 해도 되는지
+Cat::Cat(const Cat &rhs) : Animal(rhs) // 부모 복사생성자 호출 안 해도 되는지
 {
     std::cout << "Cat copy constructor called" << std::endl;
     // brain = new Brain(*rhs.brain); // 없는 게 맞는지

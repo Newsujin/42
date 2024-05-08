@@ -2,10 +2,17 @@
 #include "Dog.hpp"
 #include "WrongCat.hpp"
 
+// void f()
+// {
+//     system("leaks a.out");
+// }
+
 int main()
 {
+    // atexit(f);
+
 	// Animal	*animal = new Animal();
-	
+
     Animal  *ani[4];
     for(int i = 0; i < 4; i++)
     {
@@ -18,6 +25,6 @@ int main()
         ani[i]->makeSound();
     for(int i = 0; i < 4; i++)
         delete ani[i];
-    
+
     return 0;
 }

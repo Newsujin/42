@@ -7,7 +7,7 @@ Dog::Dog() : Animal()
     brain = new Brain();
 }
 
-Dog::Dog(const Dog &rhs) // 부모 복사생성자 호출 안 해도 되는지
+Dog::Dog(const Dog &rhs) : Animal(rhs) // 부모 복사생성자 호출 안 해도 되는지
 {
     std::cout << "Dog copy constructor called" << std::endl;
     // brain = new Brain(*rhs.brain); // 없는 게 맞는지
