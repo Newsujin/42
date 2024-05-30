@@ -1,12 +1,5 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat()
-    : _name("none")
-    , _grade(150)
-{
-    std::cout << _name << " default constructor called" << std::endl;
-}
-
 Bureaucrat::Bureaucrat(std::string name, int grade)
     : _name(name)
 {
