@@ -23,7 +23,6 @@ Bureaucrat::Bureaucrat(Bureaucrat const &rhs)
     , _grade(rhs._grade)
 {
     std::cout << _name << " copy constructor called" << std::endl;
-    *this = rhs;
 }
 
 Bureaucrat& Bureaucrat::operator=(Bureaucrat const &rhs)
