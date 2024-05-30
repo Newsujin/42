@@ -1,14 +1,14 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(std::string name, int grade)
+Bureaucrat::Bureaucrat(const std::string& name, int grade)
     : _name(name)
+    , _grade(grade)
 {
     if (grade < 1)
         throw GradeTooHighException();
     if (grade > 150)
         throw GradeTooLowException();
     std::cout << name << " constructor called" << std::endl;
-    _grade = grade;
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat const &rhs)
