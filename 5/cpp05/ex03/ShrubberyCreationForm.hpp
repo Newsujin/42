@@ -3,8 +3,6 @@
 
 # include "AForm.hpp"
 # include <fstream>
-// # include <cstdlib> // for rand() and srand()
-// # include <ctime>   // for time()
 
 class ShrubberyCreationForm : public AForm
 {
