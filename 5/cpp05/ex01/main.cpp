@@ -5,8 +5,8 @@ int main(void) {
     Bureaucrat leader("leader", 1);
     Form planA("planA", 30, 150);
     Form planB("planB", 100, 150);
-    
-    std::cout << "======================================================\n";
+
+    std::cout << std::endl;
     try
     {
         std::cout << planA;
@@ -19,8 +19,8 @@ int main(void) {
     {
         std::cout << e.what();
     }
-    
-    std::cout << "======================================================\n";
+
+    std::cout << std::endl;
     try
     {
         std::cout << planB;
@@ -31,5 +31,6 @@ int main(void) {
     {
         std::cout << e.what();
     }
-    std::cout << "======================================================\n";
+
+    std::cout << std::endl;
 }

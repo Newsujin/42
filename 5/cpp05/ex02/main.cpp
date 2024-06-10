@@ -10,7 +10,7 @@ int main()
         Bureaucrat chim("chim", 1);
 
         ShrubberyCreationForm shrubbery("Home");
-        RobotomyRequestForm robotomy("AlphaGo");
+        RobotomyRequestForm robotomy("Bender");
         PresidentialPardonForm pardon("Ford Prefect");
 
         std::cout << "\nTesting ShrubberyCreationForm with chim:" << std::endl;
