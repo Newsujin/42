@@ -60,6 +60,8 @@ void Form::beSigned(Bureaucrat const &person)
 {
     if (person.getGrade() > _signGrade)
         throw GradeTooLowException();
+    // else if (_isSigned)
+    //     throw _isSigned;
     _isSigned = true;
 }
 
@@ -75,7 +77,7 @@ const char* Form::GradeTooLowException::what() const throw()
 
 std::ostream &operator<<(std::ostream &out, const Form &rhs)
 {
-    out << rhs.getName() << ", signed: "
+    out << rhs.getName() << ", form sign status: "
         << std::boolalpha << rhs.isSigned()
         << ", signGrade: " << rhs.getSignGrade()
         << ", execGrade: " << rhs.getExecGrade()
