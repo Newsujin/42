@@ -9,9 +9,9 @@
 
 class Intern {
     private:
-        AForm *Intern::createShrubbery(const std::string &target);
-        AForm *Intern::createRobotomy(const std::string &target);
-        AForm *Intern::createPresidential(const std::string &target);
+        AForm *createShrubbery(const std::string &target);
+        AForm *createRobotomy(const std::string &target);
+        AForm *createPresidential(const std::string &target);
 
     public:
         Intern();
