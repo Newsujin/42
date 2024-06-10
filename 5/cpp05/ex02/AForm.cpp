@@ -60,8 +60,6 @@ void AForm::beSigned(Bureaucrat const &person)
 {
     if (person.getGrade() > _signGrade)
         throw GradeTooLowException();
-    // else if (_isSigned)
-    //     throw _isSigned;
     _isSigned = true;
 }
 
