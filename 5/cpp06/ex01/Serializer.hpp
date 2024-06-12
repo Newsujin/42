@@ -5,10 +5,7 @@
 # include <cstdint>
 
 struct Data {
-	char	c;
-	int		i;
-	float	f;
-	double	d;
+	char value;
 };
 
 class Serializer {
