@@ -5,7 +5,7 @@
 # include <cstdint>
 
 struct Data {
-	char value;
+	std::string value;
 };
 
 class Serializer {
