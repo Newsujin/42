@@ -2,6 +2,9 @@
 # define SCALARCONVERTER_HPP
 
 # include <iostream>
+# include <cstdlib>  // std::strtol, std::strtof, std::strtod
+# include <limits>   // std::numeric_limits
+# include <cerrno>   // errno, ERANGE
 
 # define CHAR 1
 # define INT 2
@@ -19,7 +22,8 @@ class ScalarConverter {
 		static int checkType(const std::string& literal);
 		static void strError(const std::string& literal);
 		static void sizeError(const std::string& literal);
-		static void printResult(char c, int i, float f, double d, bool isSpecial);
+		static void printCharResult(char c);
+		static void printFloatDoubleResult(int i, float f, double d);
 
 		static void charConvert(const std::string& literal);
 		static void intConvert(const std::string& literal);
