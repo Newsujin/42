@@ -34,7 +34,7 @@ void ScalarConverter::intConvert(const std::string& literal) {
 void ScalarConverter::floatConvert(const std::string& literal) {
 	errno = 0;
 	float f = std::strtof(literal.c_str(), NULL);
-	double d = std::strtod(literal.c_str(), NULL);
+	double d = static_cast<double>(f);
 
 	if (errno == ERANGE) return (sizeError(literal));
 
