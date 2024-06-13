@@ -2,9 +2,9 @@
 # define SCALARCONVERTER_HPP
 
 # include <iostream>
-# include <cstdlib>  // std::strtol, std::strtof, std::strtod
-# include <limits>   // std::numeric_limits
-# include <cerrno>   // errno, ERANGE
+# include <cstdlib>	// std::strtol, std::strtof, std::strtod
+# include <limits>	// std::numeric_limits
+# include <cerrno>	// errno, ERANGE
 
 # define CHAR 1
 # define INT 2

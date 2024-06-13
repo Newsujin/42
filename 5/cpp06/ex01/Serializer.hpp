@@ -2,7 +2,7 @@
 # define SERIALIZER_HPP
 
 # include <iostream>
-# include <cstdint>
+# define uintptr_t unsigned long
 
 struct Data {
 	std::string value;

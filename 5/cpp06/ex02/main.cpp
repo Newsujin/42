@@ -4,16 +4,19 @@
 #include "C.hpp"
 
 int	main() {
-	Base* ptr = generate();
-	identify(ptr);
-	identify(*ptr);
+	srand(time(0));
+	for (int i = 0; i < 10; i++) {
+		Base* ptr = generate();
+		identify(ptr);
+		identify(*ptr);
 
-	delete ptr;
+		delete ptr;
+		std::cout << "-\n";
+	}
 	return (0);
 }
 
 Base* generate() {
-	srand(time(0));
 	int	randValue = rand() % 3;
 
 	if (randValue == 0)
@@ -40,17 +43,17 @@ void identify(Base& p) {
 		(void)dynamic_cast<A&>(p);
 		std::cout << "A\n";
 		return ;
-	} catch (const std::bad_cast&) {}
+	} catch (const std::exception& e) {}
 
 	try {
 		(void)dynamic_cast<B&>(p);
 		std::cout << "B\n";
 		return;
-	} catch (const std::bad_cast&) {}
+	} catch (const std::exception& e) {}
 
 	try {
 		(void)dynamic_cast<C&>(p);
 		std::cout << "C\n";
 		return;
-	} catch (const std::bad_cast&) {}
+	} catch (const std::exception& e) {}
 }
