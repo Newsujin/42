@@ -13,7 +13,7 @@ int ScalarConverter::checkType(const std::string& literal) {
 
 	errno = 0;
 	std::strtof(literal.c_str(), &end);
-	if ((*end == 'f' || *end == 'F') && *(end + 1) == '\0' && errno != ERANGE) return FLOAT;
+	if ((*end == 'f') && *(end + 1) == '\0' && errno != ERANGE) return FLOAT;
 
 	errno = 0;
 	std::strtod(literal.c_str(), &end);
