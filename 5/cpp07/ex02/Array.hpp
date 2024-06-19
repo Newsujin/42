@@ -13,7 +13,7 @@ class Array {
     public:
         Array() : _arr(NULL), _size(0) {}
 
-        Array(unsigned int n) : _arr(new T[n]), _size(n) {}
+        Array(unsigned int n) : _arr(new T[n]()), _size(n) {}
 
         Array(const Array& rhs) : _arr(NULL), _size(0) { *this = rhs; }
 
@@ -23,7 +23,7 @@ class Array {
                 	delete[] _arr;
                 _size = rhs._size;
 				if (_size > 0)
-					_arr = new T[_size];
+					_arr = new T[_size]();
 				else
 					_arr = NULL;
 				for (unsigned int i = 0; i < _size; i++)
