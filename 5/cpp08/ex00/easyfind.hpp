@@ -2,7 +2,8 @@
 # define EASYFIND_HPP
 
 # include <iostream>
-// # include <algorithm>
+# include <algorithm>
+# include <limits>
 
 class NotFoundException : public std::exception {
 	public:
