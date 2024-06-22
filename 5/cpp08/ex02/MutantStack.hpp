@@ -12,7 +12,7 @@ class MutantStack : public std::stack<T, F> {
 		MutantStack(const MutantStack& rhs) : std::stack<T, F> (rhs) {}
 		MutantStack& operator=(const MutantStack& rhs) {
 			if (this != &rhs)
-				*this = rhs;
+				std::stack<T, F>::operator=(rhs);
 			return (*this);
 		}
 		~MutantStack() {}

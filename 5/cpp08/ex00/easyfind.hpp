@@ -2,14 +2,12 @@
 # define EASYFIND_HPP
 
 # include <iostream>
-# include <algorithm>
-# include <vector>
-# include <list>
+// # include <algorithm>
 
 class NotFoundException : public std::exception {
 	public:
 		const char* what() const throw() {
-			return ("element not found!");
+			return ("Element not found!");
 		}
 };
 
