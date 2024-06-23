@@ -1,6 +1,6 @@
 NAME = RPN
 
-SRCS = main.cpp Span.cpp
+SRCS = main.cpp RPN.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 CPP = c++ -Wall -Wextra -Werror -std=c++98
