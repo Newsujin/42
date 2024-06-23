@@ -1,6 +1,6 @@
-NAME = ex01
+NAME = PmergeMe
 
-SRCS = main.cpp Span.cpp
+SRCS = main.cpp PmergeMe.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 CPP = c++ -Wall -Wextra -Werror -std=c++98
