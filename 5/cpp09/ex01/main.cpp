@@ -1,10 +1,6 @@
 #include "RPN.hpp"
 
-void f() {
-	system("leaks RPN");
-}
 int main(int argc, char **argv) {
-	atexit(f);
 	if (argc != 2) {
 		std::cerr << "error: wrong argc!\n";
 		return (1);
