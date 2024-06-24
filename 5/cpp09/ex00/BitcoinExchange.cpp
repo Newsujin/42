@@ -15,7 +15,7 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& rhs) {
 
 BitcoinExchange::~BitcoinExchange() {}
 
-void BitcoinExchange::init(const std::string& dataFile)
+void BitcoinExchange::parseDb(const std::string& dataFile)
 {
     std::ifstream db(dataFile.c_str());
     if (!db.is_open())
@@ -31,9 +31,9 @@ void BitcoinExchange::init(const std::string& dataFile)
 
         if (!std::getline(lineStream, date, ',') || !std::getline(lineStream, value))
             continue;
-        if (!is_correct_date(date))
+        if (!isValidDate(date))
             throw std::logic_error("Error: incorrect date => " + date);
-        if (!is_number(value))
+        if (!isNumber(value))
             throw std::logic_error("Error: incorrect value => " + value);
 
         exchangeRates[date] = std::strtod(value.c_str(), NULL);
@@ -62,19 +62,19 @@ void BitcoinExchange::exchange(const std::string &inputFile)
             date = date.substr(0, date.size() - 1); // Remove trailing space
             valueStr = valueStr.substr(1); // Remove leading space
 
-            if (!is_correct_date(date))
+            if (!isValidDate(date))
                 throw std::logic_error("Error: incorrect date => " + date);
-            if (!is_number(valueStr))
+            if (!isNumber(valueStr))
                 throw std::logic_error("Error: not a positive number.");
 
             double value = std::strtod(valueStr.c_str(), NULL);
-            double exchangeRate = get_exchange_rate(date);
-            double result = value * exchangeRate;
-
-            if (result < 0)
+            if (value < 0)
                 throw std::logic_error("Error: not a positive number.");
-            if (result > 1000)
+            if (value > 1000)
                 throw std::logic_error("Error: too large a number.");
+
+			double exchangeRate = getExchangeRate(date);
+            double result = value * exchangeRate;
 
             std::cout << date << " => " << valueStr << " = " << result << std::endl;
         }
@@ -85,21 +85,21 @@ void BitcoinExchange::exchange(const std::string &inputFile)
     input.close();
 }
 
-bool BitcoinExchange::is_number(const std::string &value)
+bool BitcoinExchange::isNumber(const std::string &value)
 {
     char *end;
     double val = std::strtod(value.c_str(), &end);
     return (end != value.c_str() && *end == '\0' && val >= 0);
 }
 
-bool BitcoinExchange::is_correct_date(const std::string &date)
+bool BitcoinExchange::isValidDate(const std::string &date)
 {
     if (date.size() != 10 || date[4] != '-' || date[7] != '-')
         return (false);
 
-    int year = std::stoi(date.substr(0, 4));
-    int month = std::stoi(date.substr(5, 2));
-    int day = std::stoi(date.substr(8, 2));
+    int year = std::atoi(date.substr(0, 4).c_str());
+    int month = std::atoi(date.substr(5, 2).c_str());
+    int day = std::atoi(date.substr(8, 2).c_str());
 
     if (month < 1 || month > 12 || day < 1)
         return (false);
@@ -116,7 +116,7 @@ bool BitcoinExchange::is_correct_date(const std::string &date)
     return (day <= max_day[month - 1]);
 }
 
-double BitcoinExchange::get_exchange_rate(const std::string &date)
+double BitcoinExchange::getExchangeRate(const std::string &date)
 {
     std::map<std::string, double>::iterator it = exchangeRates.lower_bound(date);
 

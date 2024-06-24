@@ -65,78 +65,51 @@ void PmergeMe::mergeInsertVec() {
 		i += 2;
 	}
 	// 상위 벡터를 재귀적으로 병합 정렬
-	mergeVec(top, 1);
+	merge(top, 1);
 	// 하위 벡터의 요소들을 상위 벡터에 삽입
-	insertVec(top, bot, 0);
+	insert(top, bot, 0);
 
 	// 홀수인 경우 마지막 요소 삽입
 	if (odd.first != -1)
-		insertVecOdd(top, odd);
+		insertOdd(top, odd);
 
 	// vec에 정렬된 숫자 저장
 	for (size_t j = 0; j < top.size(); j++)
 		vec[j] = top[j].first;
 }
 
-void PmergeMe::mergeVec(std::vector<Pair>& before, int iter) {
-    if (before.size() == 1)
-        return;
+void PmergeMe::mergeInsertDeq() {
+	int mergeSize = deq.size() / 2;
+	Pair odd = std::make_pair(-1, -1);
 
-    int merge_size = before.size() / 2;
-    Pair odd = std::make_pair(-1, -1);
+	if (deq.size() % 2 == 1)
+		odd = std::make_pair(deq[deq.size() - 1], -1);
 
-    if (before.size() % 2 == 1)
-        odd = before[before.size() - 1];
+	std::deque<Pair> top;
+	std::deque<Pair> bot;
+	int i = 0;
+	int idx = 0;
 
-    std::vector<Pair> top;
-    std::vector<Pair> bot;
-    int i = 0;
-    while (merge_size--) {
-        top.push_back(before[i + !(before[i].first > before[i + 1].first)]);
-        bot.push_back(before[i + (before[i].first > before[i + 1].first)]);
-        i += 2;
-    }
+    // 상위 및 하위 벡터 생성
+	while (mergeSize--) {
+		top.push_back(std::make_pair(deq[i + !(deq[i] > deq[i + 1])], idx++));
+		bot.push_back(std::make_pair(deq[i + (deq[i] > deq[i + 1])], -1));
+		i += 2;
+	}
+	// 상위 벡터를 재귀적으로 병합 정렬
+	merge(top, 1);
+	// 하위 벡터의 요소들을 상위 벡터에 삽입
+	insert(top, bot, 0);
 
-    mergeVec(top, iter + 1);
-    insertVec(top, bot, iter);
+	// 홀수인 경우 마지막 요소 삽입
+	if (odd.first != -1)
+		insertOdd(top, odd);
 
-    if (odd.first > -1)
-        insertVecOdd(top, odd);
-
-    before = top;
+	// vec에 정렬된 숫자 저장
+	for (size_t j = 0; j < top.size(); j++)
+		deq[j] = top[j].first;
 }
 
-void PmergeMe::insertVec(std::vector<Pair>& top, std::vector<Pair>& bot, int iter) {
-    for (size_t i = 0; i < bot.size(); i++) {
-        int check = top[i * 2].second / static_cast<int>(pow(2, iter));
-        int st = 0;
-        int en = i * 2;
-        while (st < en) {
-            int mid = (st + en) / 2;
-            if (top[mid].first > bot[check].first)
-                en = mid - 1;
-            else
-                st = mid + 1;
-        }
-        if (top[st].first > bot[check].first)
-            top.insert(top.begin() + st, bot[check]);
-        else
-            top.insert(top.begin() + st + 1, bot[check]);
-    }
-}
-
-void PmergeMe::insertVecOdd(std::vector<Pair>& top, Pair& odd) {
-    int st = 0;
-    int en = top.size() - 1;
-    while (st < en) {
-        int mid = (st + en) / 2;
-        if (top[mid].first > odd.first)
-            en = mid - 1;
-        else
-            st = mid + 1;
-    }
-    if (top[st].first > odd.first)
-        top.insert(top.begin() + st, odd);
-    else
-        top.insert(top.begin() + st + 1, odd);
+size_t PmergeMe::jacobsthalNum(size_t n) {
+    return ((pow(2, n) - pow(-1, n)) / 3);
 }

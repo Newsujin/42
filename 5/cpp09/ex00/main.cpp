@@ -8,7 +8,7 @@ int	main(int argc, char **argv) {
 
 	try {
 		BitcoinExchange btc;
-		btc.init("data.csv");
+		btc.parseDb("data.csv");
 		btc.exchange(argv[1]);
 	}
 	catch (std::exception& e) {
