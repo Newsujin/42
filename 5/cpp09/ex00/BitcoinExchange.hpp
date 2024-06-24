@@ -8,7 +8,11 @@
 
 class BitcoinExchange {
 	private:
-		std::map<std::string, float> _bitcoinPrice;
+		std::map<std::string, double> exchangeRates;
+
+		bool is_number(const std::string& value);
+		bool is_correct_date(const std::string& date);
+		double get_exchange_rate(const std::string& date);
 
 	public:
 		BitcoinExchange();
@@ -16,8 +20,8 @@ class BitcoinExchange {
 		BitcoinExchange& operator=(const BitcoinExchange& rhs);
 		~BitcoinExchange();
 
-		void loadDatabase(const std::string& filename);
-		void processTransaction(const std::string& date, float value) const;
+		void init(const std::string& dataFile);
+		void exchange(const std::string& inputFile);
 };
 
 #endif
