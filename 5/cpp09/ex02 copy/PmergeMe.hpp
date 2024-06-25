@@ -51,21 +51,26 @@ class PmergeMe {
 		}
 
 		template<typename T>
-		void insert(T& top, T& bot, int iter) {
+		void insert(T& top, T& bot, int iter) { // iter == depth
+			std::cout << "insert start " << iter << std::endl;
 			T sorting = top;
+			// 야콥스탈 수 1은 맨 앞이기 때문에 바로 삽입
 			sorting.insert(sorting.begin(), bot[top[0].second/static_cast<int>(pow(2, iter))]);
 			size_t k = 1; // 배열에 넣은 숫자 개수
 			std::vector<size_t> jacobsthalArr;
+			// 야콥스탈 수 배열 생성 : 1 3 5 11 ...
 			for (size_t i = 1; jacobsthalNum(i) < top.size(); i++)
 				jacobsthalArr.push_back(jacobsthalNum(i + 1));
+ 				// i + 1 삽입 이유 : 야콥 스탈 수가 0 1 1 3 5 .. 인데 2번째 1부터 삽입하기 위하여
 
+			// 야콥스탈 수 1은 위에서 바로 sorting에 넣었기 때문에 j = 1부터 시작
 			for (size_t j = 1; j < jacobsthalArr.size(); j++) {
 				for (size_t i = jacobsthalArr[j]; i > jacobsthalArr[j - 1]; i--) {
 					if (i > top.size())
 						i = top.size();
-					Pair value = bot[top[i].second/static_cast<int>(pow(2, iter))];
+					Pair value = bot[top[i - 1].second/static_cast<int>(pow(2, iter))];
 					int st = 0;
-					int en = i + k - 2;
+					int en = i + k - 2; // 식 도출 방법
 
 					while (st < en) {
 						int mid = (st + en) / 2;
@@ -75,12 +80,14 @@ class PmergeMe {
 							st = mid + 1;
 					}
 					if (sorting[st].first > value.first)
-						sorting.insert(top.begin() + st, value);
+						sorting.insert(sorting.begin() + st, value);
 					else
-						sorting.insert(top.begin() + st + 1, value);
+						sorting.insert(sorting.begin() + st + 1, value);
 					k++;
 				}
 			}
+			top = sorting;
+			std::cout << "insert end" << std::endl;
 		}
 
 		template<typename T>

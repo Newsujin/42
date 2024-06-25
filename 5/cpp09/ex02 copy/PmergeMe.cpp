@@ -50,6 +50,7 @@ void PmergeMe::mergeInsertVec() {
 	int mergeSize = vec.size() / 2;
 	Pair odd = std::make_pair(-1, -1);
 
+	// 홀수면 마지막 수를 odd에 삽입
 	if (vec.size() % 2 == 1)
 		odd = std::make_pair(vec[vec.size() - 1], -1);
 

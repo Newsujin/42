@@ -7,11 +7,11 @@ int	main(int ac, char **av) {
 	}
 
 	try {
-		PmergeMe merge(ac, av);
-		merge.printInput(BEFORE_SORT);
-		merge.mergeInsertVec();
-		merge.mergeInsertDeq();
-		merge.printInput(AFTER_SORT);
+		PmergeMe pmm(ac, av);
+		pmm.printInput(BEFORE_SORT);
+		pmm.mergeInsertVec();
+		pmm.mergeInsertDeq();
+		pmm.printInput(AFTER_SORT);
 	}
 	catch (std::exception& e) {
 		std::cout << e.what() << std::endl;
