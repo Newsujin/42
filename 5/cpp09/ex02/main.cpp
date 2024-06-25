@@ -7,10 +7,20 @@ int	main(int ac, char **av) {
 	}
 
 	try {
-		PmergeMe merge(ac, av);
-		merge.printInput(BEFORE_SORT);
-		merge.mergeInsertVec();
-		merge.printInput(AFTER_SORT);
+		PmergeMe pmm(ac, av);
+
+		pmm.printArr(BEFORE_SORT);
+		clock_t vec_t = clock();
+		pmm.fordJohnsonVec();
+        vec_t = clock() - vec_t;
+		pmm.printArr(AFTER_SORT);
+        std::cout << "Time to process a range of " << ac - 1 << " element with std::vector : " << static_cast<float>(vec_t) * 1000000 / CLOCKS_PER_SEC << " us" << std::endl;
+
+		clock_t deq_t = clock();
+		pmm.fordJohnsonDeq();
+        deq_t = clock() - deq_t;
+        std::cout << "Time to process a range of " << ac - 1 << " element with std::deque : " << static_cast<float>(deq_t) * 1000000 / CLOCKS_PER_SEC << " us" << std::endl;
+
 	}
 	catch (std::exception& e) {
 		std::cout << e.what() << std::endl;
