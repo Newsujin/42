@@ -3,6 +3,8 @@
 
 # include <iostream>
 # include <vector>
+# include <cstdlib>
+# include <cmath>
 # include <deque>
 
 # define BEFORE_SORT 0
@@ -39,8 +41,7 @@ class PmergeMe {
 
 		void fordJohnsonVec();
 		void fordJohnsonDeq();
-		void printVec(int state);
-		void printDeq(int state);
+		void printArr(int state);
 };
 
 #endif
