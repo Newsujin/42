@@ -42,6 +42,9 @@ size_t PmergeMe::jacobsthalNum(size_t n) {
 
 /* vector */
 void PmergeMe::fordJohnsonVec() {
+	if (vec.size() == 1)
+		return ;
+
 	int mergeSize = vec.size() / 2;
 	Pair odd = std::make_pair(-1, -1);
 
@@ -158,7 +161,7 @@ void PmergeMe::insertVecOdd(std::vector<Pair>& top, Pair& odd) {
 		top.insert(top.begin() + st + 1, odd);
 }
 
-void PmergeMe::printVec(int state) {
+void PmergeMe::printArr(int state) {
 	if (state == BEFORE_SORT)
 		std::cout << "Before: ";
 	else if (state == AFTER_SORT)
@@ -171,6 +174,9 @@ void PmergeMe::printVec(int state) {
 
 /* deque */
 void PmergeMe::fordJohnsonDeq() {
+	if (deq.size() == 1)
+		return ;
+
 	int mergeSize = deq.size() / 2;
 	Pair odd = std::make_pair(-1, -1);
 
@@ -276,15 +282,4 @@ void PmergeMe::insertDeqOdd(std::deque<Pair>& top, Pair& odd) {
 		top.insert(top.begin() + st, odd);
 	else
 		top.insert(top.begin() + st + 1, odd);
-}
-
-void PmergeMe::printDeq(int state) {
-	if (state == BEFORE_SORT)
-		std::cout << "Before: ";
-	else if (state == AFTER_SORT)
-		std::cout << "After: ";
-
-	for (size_t i = 0; i < deq.size() - 1; i++)
-		std::cout << deq[i] << " ";
-	std::cout << deq[deq.size() - 1] << std::endl;
 }
