@@ -15,8 +15,7 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& rhs) {
 
 BitcoinExchange::~BitcoinExchange() {}
 
-void BitcoinExchange::parseDb(const std::string& dataFile)
-{
+void BitcoinExchange::parseDb(const std::string& dataFile) {
     std::ifstream db(dataFile.c_str());
     if (!db.is_open())
         throw std::logic_error("Error: could not open data file.");
@@ -36,13 +35,12 @@ void BitcoinExchange::parseDb(const std::string& dataFile)
         if (!isNumber(value))
             throw std::logic_error("Error: incorrect value => " + value);
 
-        exchangeRates[date] = std::strtod(value.c_str(), NULL);
+        exchangeRates[date] = strtod(value.c_str(), NULL);
     }
     db.close();
 }
 
-void BitcoinExchange::exchange(const std::string &inputFile)
-{
+void BitcoinExchange::exchange(const std::string &inputFile) {
     std::ifstream input(inputFile.c_str());
     if (!input.is_open())
         throw std::logic_error("Error: could not open file.");
@@ -67,7 +65,7 @@ void BitcoinExchange::exchange(const std::string &inputFile)
             if (!isNumber(valueStr))
                 throw std::logic_error("Error: not a positive number.");
 
-            double value = std::strtod(valueStr.c_str(), NULL);
+            double value = strtod(valueStr.c_str(), NULL);
             if (value < 0)
                 throw std::logic_error("Error: not a positive number.");
             if (value > 1000)
@@ -85,21 +83,19 @@ void BitcoinExchange::exchange(const std::string &inputFile)
     input.close();
 }
 
-bool BitcoinExchange::isNumber(const std::string &value)
-{
+bool BitcoinExchange::isNumber(const std::string &value) {
     char *end;
-    double val = std::strtod(value.c_str(), &end);
+    double val = strtod(value.c_str(), &end);
     return (end != value.c_str() && *end == '\0' && val >= 0);
 }
 
-bool BitcoinExchange::isValidDate(const std::string &date)
-{
+bool BitcoinExchange::isValidDate(const std::string &date) {
     if (date.size() != 10 || date[4] != '-' || date[7] != '-')
         return (false);
 
-    int year = std::atoi(date.substr(0, 4).c_str());
-    int month = std::atoi(date.substr(5, 2).c_str());
-    int day = std::atoi(date.substr(8, 2).c_str());
+    int year = atoi(date.substr(0, 4).c_str());
+    int month = atoi(date.substr(5, 2).c_str());
+    int day = atoi(date.substr(8, 2).c_str());
 
     if (month < 1 || month > 12 || day < 1)
         return (false);
@@ -116,8 +112,7 @@ bool BitcoinExchange::isValidDate(const std::string &date)
     return (day <= max_day[month - 1]);
 }
 
-double BitcoinExchange::getExchangeRate(const std::string &date)
-{
+double BitcoinExchange::getExchangeRate(const std::string &date) {
     std::map<std::string, double>::iterator it = exchangeRates.lower_bound(date);
 
     if (it == exchangeRates.begin() && it->first != date)
