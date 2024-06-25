@@ -18,6 +18,9 @@ void RPN::execute(const std::string& str) {
     for (size_t i = 0; i < str.size(); i++) {
 		if (str[i] == ' ') continue;
 
+		if ((str[i] == '+' || str[i] == '-') && isdigit(str[i + 1]))
+			throw std::logic_error("wrong number!");
+			
 		if (isdigit(str[i]))
 			_stack.push(str[i] - '0');
 		else if (isOperator(str[i])) {
