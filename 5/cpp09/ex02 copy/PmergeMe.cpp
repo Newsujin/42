@@ -103,40 +103,43 @@ void PmergeMe::mergeVec(std::vector<Pair>& before, int iter) {
 }
 
 void PmergeMe::insertVec(std::vector<Pair>& top, std::vector<Pair>& bot, int iter) { // iter == depth
-	std::vector<Pair> sorting = top;
+	std::vector<Pair> sorted_arr = top;
 	// 야콥스탈 수 1은 맨 앞이기 때문에 바로 삽입
-	sorting.insert(sorting.begin(), bot[top[0].second/static_cast<int>(pow(2, iter))]);
-	size_t k = 1; // 배열에 넣은 숫자 개수
+	sorted_arr.insert(sorted_arr.begin(), bot[top[0].second/static_cast<int>(pow(2, iter))]);
+	size_t insert_cnt = 1; // 배열에 넣은 숫자 개수
 	std::vector<size_t> jacobsthalArr;
 	// 야콥스탈 수 배열 생성 : 1 3 5 11 ...
 	for (size_t i = 1; jacobsthalNum(i) < top.size(); i++)
 		jacobsthalArr.push_back(jacobsthalNum(i + 1));
 		// i + 1 삽입 이유 : 야콥 스탈 수가 0 1 1 3 5 .. 인데 2번째 1부터 삽입하기 위하여
 
-	// 야콥스탈 수 1은 위에서 바로 sorting에 넣었기 때문에 j = 1부터 시작
+	// 야콥스탈 수 1은 위에서 바로 sorted_arr에 넣었기 때문에 j = 1부터 시작
 	for (size_t j = 1; j < jacobsthalArr.size(); j++) {
-		for (size_t i = jacobsthalArr[j]; i > jacobsthalArr[j - 1]; i--) {
-			if (i > top.size())
-				i = top.size();
-			Pair value = bot[top[i - 1].second/static_cast<int>(pow(2, iter))];
-			int st = 0;
-			int en = i + k - 2; // 식 도출 방법
+		for (size_t jacob_n = jacobsthalArr[j]; jacob_n > jacobsthalArr[j - 1]; jacob_n--) {
+			if (jacob_n > top.size()) jacob_n = top.size();
 
-			while (st < en) {
-				int mid = (st + en) / 2;
-				if (sorting[mid].first > value.first)
-					en = mid - 1;
-				else
-					st = mid + 1;
-			}
-			if (sorting[st].first > value.first)
-				sorting.insert(sorting.begin() + st, value);
-			else
-				sorting.insert(sorting.begin() + st + 1, value);
-			k++;
+			Pair value = bot[top[jacob_n - 1].second/static_cast<int>(pow(2, iter))];
+			sorted_arr = binarySearchVec(sorted_arr, 0, jacob_n + insert_cnt - 2, value);
+			insert_cnt++;
 		}
 	}
-	top = sorting;
+	top = sorted_arr;
+}
+
+std::vector<PmergeMe::Pair> PmergeMe::binarySearchVec(std::vector<Pair> arr, int start, int end, Pair value) {
+	while (start < end) {
+		int mid = (start + end) / 2;
+		if (arr[mid].first > value.first)
+			end = mid - 1;
+		else
+			start = mid + 1;
+	}
+	if (arr[start].first > value.first)
+		arr.insert(arr.begin() + start, value);
+	else
+		arr.insert(arr.begin() + start + 1, value);
+
+	return (arr);
 }
 
 void PmergeMe::insertVecOdd(std::vector<Pair>& top, Pair& odd) {
@@ -223,36 +226,40 @@ void PmergeMe::mergeDeq(std::deque<Pair>& before, int iter) {
 }
 
 void PmergeMe::insertDeq(std::deque<Pair>& top, std::deque<Pair>& bot, int iter) {
-	std::deque<Pair> sorting = top;
-	sorting.insert(sorting.begin(), bot[top[0].second/static_cast<int>(pow(2, iter))]);
-	size_t k = 1;
+	std::deque<Pair> sorted_arr = top;
+	sorted_arr.insert(sorted_arr.begin(), bot[top[0].second/static_cast<int>(pow(2, iter))]);
+	size_t insert_cnt = 1;
 	std::deque<size_t> jacobsthalArr;
 	for (size_t i = 1; jacobsthalNum(i) < top.size(); i++)
 		jacobsthalArr.push_back(jacobsthalNum(i + 1));
 
 	for (size_t j = 1; j < jacobsthalArr.size(); j++) {
-		for (size_t i = jacobsthalArr[j]; i > jacobsthalArr[j - 1]; i--) {
-			if (i > top.size())
-				i = top.size();
-			Pair value = bot[top[i - 1].second/static_cast<int>(pow(2, iter))];
-			int st = 0;
-			int en = i + k - 2;
+		for (size_t jacob_n = jacobsthalArr[j]; jacob_n > jacobsthalArr[j - 1]; jacob_n--) {
+			if (jacob_n > top.size())
+				jacob_n = top.size();
 
-			while (st < en) {
-				int mid = (st + en) / 2;
-				if (sorting[mid].first > value.first)
-					en = mid - 1;
-				else
-					st = mid + 1;
-			}
-			if (sorting[st].first > value.first)
-				sorting.insert(sorting.begin() + st, value);
-			else
-				sorting.insert(sorting.begin() + st + 1, value);
-			k++;
+			Pair value = bot[top[jacob_n - 1].second/static_cast<int>(pow(2, iter))];
+			sorted_arr = binarySearchDeq(sorted_arr, 0, jacob_n + insert_cnt - 2, value);
+			insert_cnt++;
 		}
 	}
-	top = sorting;
+	top = sorted_arr;
+}
+
+std::deque<PmergeMe::Pair> PmergeMe::binarySearchDeq(std::deque<Pair> arr, int start, int end, Pair value) {
+	while (start < end) {
+		int mid = (start + end) / 2;
+		if (arr[mid].first > value.first)
+			end = mid - 1;
+		else
+			start = mid + 1;
+	}
+	if (arr[start].first > value.first)
+		arr.insert(arr.begin() + start, value);
+	else
+		arr.insert(arr.begin() + start + 1, value);
+
+	return (arr);
 }
 
 void PmergeMe::insertDeqOdd(std::deque<Pair>& top, Pair& odd) {
