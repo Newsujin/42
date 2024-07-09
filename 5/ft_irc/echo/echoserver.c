@@ -16,8 +16,6 @@ void error_handling(char* message)
 
 int main(int argc, char* argv[])
 {
-    (void)argc;
-   
     int serv_sock;
     int clnt_sock;
 
@@ -27,6 +25,12 @@ int main(int argc, char* argv[])
     struct sockaddr_in clnt_addr;
     socklen_t clnt_addr_size;
 
+    if (argc != 2)
+    {
+        printf("Usage : %s <port> \n", argv[0]);
+        exit(1);
+    }
+    
     // TCP연결, IPv4 도메인을 위한 소켓 생성
     serv_sock = socket(AF_INET, SOCK_STREAM, 0);
     if (serv_sock == -1)
