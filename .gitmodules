@@ -1,0 +1,12 @@
+[submodule "3/42-minishell"]
+	path = 3/42-minishell
+	url = https://github.com/dpfls0922/42-minishell.git
+[submodule "4/42-cub3d"]
+	path = 4/42-cub3d
+	url = https://github.com/Newsujin/42-cub3d.git
+[submodule "5/INFPRC"]
+	path = 5/INFPRC
+	url = https://github.com/InfpRC/INFPRC.git
+[submodule "5/Inception"]
+	path = 5/Inception
+	url = https://github.com/Newsujin/Inception.git
